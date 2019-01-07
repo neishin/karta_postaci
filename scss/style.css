@@ -1,0 +1,47 @@
+/* line 1, scss/style.scss */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 16px; }
+
+/* line 8, scss/style.scss */
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; }
+
+/* line 15, scss/style.scss */
+.stat-container {
+  margin-bottom: 10px;
+  text-align: center;
+  border: 1px solid black;
+  width: 15rem;
+  padding: 10px 0; }
+  /* line 21, scss/style.scss */
+  .stat-container .stat-button {
+    padding: 0 20px; }
+
+/* line 26, scss/style.scss */
+.main-stat {
+  font-size: 1.7rem; }
+
+/* line 31, scss/style.scss */
+.mod-stat {
+  font-size: 1.2rem; }
+
+/* line 35, scss/style.scss */
+#points-pool-container {
+  border: 1px black solid;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  font-size: 1.5rem;
+  text-align: center; }
+  /* line 43, scss/style.scss */
+  #points-pool-container #points-pool {
+    font-size: 2rem; }
+
+/*# sourceMappingURL=style.css.map */

@@ -6,42 +6,79 @@
   font-size: 16px; }
 
 /* line 8, scss/style.scss */
+.page {
+  display: flex;
+  justify-content: space-around;
+  position: relative; }
+
+/* line 13, scss/style.scss */
+.race-container {
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+/* line 22, scss/style.scss */
+.race-button {
+  width: 25%;
+  padding: 10px;
+  margin: 10px 0 0 0; }
+
+/* line 28, scss/style.scss */
+.race-arrow {
+  width: 25%; }
+
+/* line 31, scss/style.scss */
 .stats {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; }
+  justify-content: center; }
 
-/* line 15, scss/style.scss */
+/* line 38, scss/style.scss */
 .stat-container {
   margin-bottom: 10px;
   text-align: center;
   border: 1px solid black;
   width: 15rem;
   padding: 10px 0; }
-  /* line 21, scss/style.scss */
+  /* line 44, scss/style.scss */
   .stat-container .stat-button {
     padding: 0 20px; }
 
-/* line 26, scss/style.scss */
+/* line 49, scss/style.scss */
 .main-stat {
   font-size: 1.7rem; }
 
-/* line 31, scss/style.scss */
+/* line 54, scss/style.scss */
 .mod-stat {
   font-size: 1.2rem; }
 
-/* line 35, scss/style.scss */
+/* line 58, scss/style.scss */
 #points-pool-container {
+  width: 200px;
+  height: 100px;
   border: 1px black solid;
   padding: 1rem;
   position: absolute;
-  top: 50%;
-  left: 25%;
+  bottom: 50%;
+  left: calc(50-100px);
   font-size: 1.5rem;
-  text-align: center; }
-  /* line 43, scss/style.scss */
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  /* line 70, scss/style.scss */
   #points-pool-container #points-pool {
     font-size: 2rem; }
+
+/* line 76, scss/style.scss */
+.hidden {
+  display: none; }
+
+/* line 80, scss/style.scss */
+.visible {
+  display: block; }
 
 /*# sourceMappingURL=style.css.map */

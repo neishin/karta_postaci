@@ -6,78 +6,93 @@
   font-size: 16px; }
 
 /* line 8, scss/style.scss */
-.page {
-  display: flex;
-  justify-content: space-around;
+body {
   position: relative; }
 
-/* line 13, scss/style.scss */
-.race-container {
-  width: 960px;
+/* line 12, scss/style.scss */
+.page {
+  display: flex;
+  justify-content: space-around; }
+
+/* line 16, scss/style.scss */
+.race-container, .class-container {
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column; }
 
-/* line 22, scss/style.scss */
-.race-button {
-  width: 25%;
+/* line 26, scss/style.scss */
+.race-button, .class-button {
+  width: 50%;
   padding: 10px;
   margin: 10px 0 0 0; }
 
-/* line 28, scss/style.scss */
+/* line 32, scss/style.scss */
 .race-arrow {
   width: 25%; }
 
-/* line 31, scss/style.scss */
+/* line 35, scss/style.scss */
 .stats {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; }
 
-/* line 38, scss/style.scss */
+/* line 42, scss/style.scss */
 .stat-container {
   margin-bottom: 10px;
   text-align: center;
   border: 1px solid black;
   width: 15rem;
   padding: 10px 0; }
-  /* line 44, scss/style.scss */
+  /* line 48, scss/style.scss */
+  .stat-container:first-child {
+    margin-top: 100px; }
+  /* line 51, scss/style.scss */
   .stat-container .stat-button {
     padding: 0 20px; }
 
-/* line 49, scss/style.scss */
+/* line 56, scss/style.scss */
+.tooltip {
+  border: 1px solid black;
+  background-color: white;
+  position: absolute;
+  z-index: 2; }
+
+/* line 63, scss/style.scss */
 .main-stat {
   font-size: 1.7rem; }
 
-/* line 54, scss/style.scss */
+/* line 68, scss/style.scss */
 .mod-stat {
   font-size: 1.2rem; }
 
-/* line 58, scss/style.scss */
+/* line 72, scss/style.scss */
 #points-pool-container {
-  width: 200px;
-  height: 100px;
+  width: 100vw;
+  height: 80px;
   border: 1px black solid;
-  padding: 1rem;
-  position: absolute;
-  bottom: 50%;
-  left: calc(50-100px);
+  padding: 1rem 0 0.5rem;
+  margin-bottom: 10px;
+  position: fixed;
+  top: 0;
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center; }
-  /* line 70, scss/style.scss */
+  align-items: center;
+  background-color: white; }
+  /* line 85, scss/style.scss */
   #points-pool-container #points-pool {
     font-size: 2rem; }
 
-/* line 76, scss/style.scss */
+/* line 91, scss/style.scss */
 .hidden {
   display: none; }
 
-/* line 80, scss/style.scss */
+/* line 95, scss/style.scss */
 .visible {
   display: block; }
 

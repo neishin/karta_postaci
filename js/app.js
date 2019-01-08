@@ -1,82 +1,97 @@
 $(document).ready(function () {
     // wybór rasy
-//    function chooseRase() {
-//       $('.stats').addClass('hidden');
-//        var raceContainer = $('<div>', {class: 'race-container'});
-//        $('body').append(raceContainer)
-//        var dwarfButton = $('<button>', {class: 'race-button', id: 'dwarf'}).text('Krasnolud');
-//        $('.race-container').append(dwarfButton);
-////        var dwarfArrow = $('<button>', {class: 'race-arrow', id: 'dwarf-arrow'}).html('<i class="fas fa-caret-down"></i>');
-////        $('.race-container').append(dwarfArrow);
-//        var elfButton = $('<button>', {class: 'race-button', id: 'elf'}).text('Elf');
-//        $('.race-container').append(elfButton);
-//        var halflingButton = $('<button>', {class: 'race-button', id: 'halfling'}).text('Halfling');
-//        $('.race-container').append(halflingButton);
-//        var humanButton = $('<button>', {class: 'race-button', id: 'human'}).text('Człowiek');
-//        $('.race-container').append(humanButton);
-//        var dragonbornButton = $('<button>', {class: 'race-button', id: 'dragonborn'}).text('Smokowiec');
-//        $('.race-container').append(dragonbornButton);
-//        var gnomeButton = $('<button>', {class: 'race-button', id: 'gnome'}).text('Gnom');
-//        $('.race-container').append(gnomeButton);
+    function chooseRase() {
+       $('.stats').addClass('hidden');
+        $('#points-pool-container').css('display', 'none');
+        var raceContainer = $('<div>', {class: 'race-container'});
+        $('body').append(raceContainer)
+        var dwarfButton = $('<button>', {class: 'race-button', id: 'dwarf'}).text('Krasnolud');
+        $('.race-container').append(dwarfButton);
+//        var dwarfArrow = $('<button>', {class: 'race-arrow', id: 'dwarf-arrow'}).html('<i class="fas fa-caret-down"></i>');
+//        $('.race-container').append(dwarfArrow);
+        var elfButton = $('<button>', {class: 'race-button', id: 'elf'}).text('Elf');
+        $('.race-container').append(elfButton);
+        var halflingButton = $('<button>', {class: 'race-button', id: 'halfling'}).text('Halfling');
+        $('.race-container').append(halflingButton);
+        var humanButton = $('<button>', {class: 'race-button', id: 'human'}).text('Człowiek');
+        $('.race-container').append(humanButton);
+        var dragonbornButton = $('<button>', {class: 'race-button', id: 'dragonborn'}).text('Smokowiec');
+        $('.race-container').append(dragonbornButton);
+        var gnomeButton = $('<button>', {class: 'race-button', id: 'gnome'}).text('Gnom');
+        $('.race-container').append(gnomeButton);
 //        var halfelfButton = $('<button>', {class: 'race-button', id: 'halfelf'}).text('Pół-elf');
 //        $('.race-container').append(halfelfButton);
-//        var tieflingButton = $('<button>', {class: 'race-button', id: 'tiefling'}).text('Tiefling');
-//        $('.race-container').append(tieflingButton)
-//        $('#dwarf').on('click', function () {
+        var tieflingButton = $('<button>', {class: 'race-button', id: 'tiefling'}).text('Tiefling');
+        $('.race-container').append(tieflingButton)
+
+        function clickAccept () {
+            $('.stats').removeClass('hidden');
+            $('.race-container').addClass('hidden');
+            $('#points-pool-container').css('display', 'flex');
+        }
+        $('#dwarf').on({
+            mouseenter: function () {
+            console.log('jest')
+            var dwarfCharacteristics = $('<button>');
+            $('body').append(dwarfCharacteristics);
+            $('#dwarf-character').text('Krasnoludy mają +2 do Wytrzymałości')
+            },
+            click: function () {
+            $('#con').text('10');
+            $('#con-mod').text('0');
+            clickAccept();
+            }
+        });
+//        $('#dwarf').on('click mouseenter', function () {
 //            $('#con').text('10');
 //            $('#con-mod').text('0');
-//            $('.stats').removeClass('hidden');
-//            $('.race-container').addClass('hidden');
+//            clickAccept();
 //        });
-//        $('#elf').on('click', function () {
-//            $('#dex').text('10');
-//            $('#dex-mod').text('0');
-//            $('.stats').removeClass('hidden');
-//            $('.race-container').addClass('hidden');
-//        });
-//        $('#halfling').on('click', function () {
-//            $('#dex').text('10');
-//            $('#dex-mod').text('0');
-//            $('.stats').removeClass('hidden');
-//            $('.race-container').addClass('hidden');
-//        });
-//        $('#human').on('click', function () {
-//            $('.main-stat').text('9');
-//            $('.stats').removeClass('hidden');
-//            $('.race-container').addClass('hidden');
-//        });
-//        $('#dragonborn').on('click', function () {
-//            $('#str').text('10');
-//            $('#str-mod').text('0');
-//            $('#cha').text('9');
-//            $('.stats').removeClass('hidden');
-//            $('.race-container').addClass('hidden');
-//        });
-//        $('#gnome').on('click', function () {
-//            $('#int').text('10');
-//            $('#int-mod').text('0');
-//            $('.stats').removeClass('hidden');
-//            $('.race-container').addClass('hidden');
-//        });
-//        $('#tiefling').on('click', function () {
-//            $('#int').text('9');
-//            $('#cha').text('10');
-//            $('#cha-mod').text('0');
-//            $('.stats').removeClass('hidden');
-//            $('.race-container').addClass('hidden');
-//        })
-//    }
-//
-//    chooseRase();
-
-    // wybór klasy
-    function chooseClass() {
-        $('.stats').addClass('hidden');
-        var classContainer = $('<div>', {class: 'class-container'});
-        $('body').append(classContainer)
+        $('#elf').on('click', function () {
+            $('#dex').text('10');
+            $('#dex-mod').text('0');
+            clickAccept();
+        });
+        $('#halfling').on('click', function () {
+            $('#dex').text('10');
+            $('#dex-mod').text('0');
+            clickAccept();
+        });
+        $('#human').on('click', function () {
+            $('.main-stat').text('9');
+            clickAccept();
+        });
+        $('#dragonborn').on('click', function () {
+            $('#str').text('10');
+            $('#str-mod').text('0');
+            $('#cha').text('9');
+            clickAccept();
+        });
+        $('#gnome').on('click', function () {
+            $('#int').text('10');
+            $('#int-mod').text('0');
+            clickAccept();
+        });
+        $('#tiefling').on('click', function () {
+            $('#int').text('9');
+            $('#cha').text('10');
+            $('#cha-mod').text('0');
+            clickAccept();
+        })
     }
 
-    chooseClass();
+    chooseRase();
+
+    // wybór klasy
+//    function chooseClass() {
+//        $('.stats').addClass('hidden');
+//        var classContainer = $('<div>', {class: 'class-container'});
+//        $('body').append(classContainer);
+//        var fighterButton = $('<button>', {class: 'class-button', id: 'fighter'}).text('Wojownik');
+//        $('.classContainer').append(fighterButton);
+//    }
+//
+//    chooseClass();
 
     // funkcja zmniejszająca stat
     function minStat(stat, mod) {
@@ -108,7 +123,7 @@ $(document).ready(function () {
         var mod = $(mod);
         var statNumber = parseInt(currentStat);
         var poolNumber = parseInt(currentPool);
-        if (currentPool <= 0) {
+        if (currentPool <= 0 || (currentPool == 1 && statNumber>=13)) {
             alert('nie masz już punktów');
             return;
         }
@@ -144,6 +159,8 @@ $(document).ready(function () {
         var currentPool = $('#points-pool').text();
         var poolNumber = parseInt(currentPool);
         if (poolNumber === 0) {
+            $('#points-pool-container').css('height', '110px')
+            $('.stat-container:first-child').css('margin-top', '125px')
             $('#accept-button').removeClass('hidden')
         } else {
             $('#accept-button').addClass('hidden')
@@ -151,6 +168,8 @@ $(document).ready(function () {
         $('#accept-button').on('click', function () {
             $('.stat-button').addClass('hidden');
             $('#points-pool-container').css('display', 'none');
+            $('#points-pool-container').css('display', 'none');
+            $('.stat-container:first-child').css('margin-top', '10px')
         })
     }
 

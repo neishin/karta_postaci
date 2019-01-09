@@ -18,59 +18,101 @@ body {
 .race-container, .class-container {
   width: 100vw;
   height: 100vh;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column; }
 
-/* line 26, scss/style.scss */
+/* line 25, scss/style.scss */
+.race-buttons-container {
+  display: flex;
+  width: 80%; }
+
+/* line 30, scss/style.scss */
+.fas {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  color: lightgray; }
+
+/* line 36, scss/style.scss */
 .race-button, .class-button {
   width: 50%;
   padding: 10px;
-  margin: 10px 0 0 0; }
+  margin: 10px 0 0 0;
+  flex-grow: 3; }
 
-/* line 32, scss/style.scss */
+/* line 43, scss/style.scss */
+.race-info {
+  position: absolute;
+  top: 50vh;
+  left: 10vw;
+  border: 1px black solid;
+  background: white;
+  width: 80%;
+  padding: 1rem 1rem 1rem 2rem;
+  line-height: 1.2;
+  list-style-type: square;
+  max-height: 0;
+  transition: 1s;
+  overflow: hidden; }
+  /* line 59, scss/style.scss */
+  .race-info.visible {
+    top: 20vh;
+    max-height: 80vh; }
+
+/* line 66, scss/style.scss */
+.subrace-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+  /* line 72, scss/style.scss */
+  .subrace-container .subrace-type {
+    width: 80vw;
+    padding: 10px; }
+
+/* line 78, scss/style.scss */
 .race-arrow {
   width: 25%; }
 
-/* line 35, scss/style.scss */
+/* line 81, scss/style.scss */
 .stats {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; }
 
-/* line 42, scss/style.scss */
+/* line 88, scss/style.scss */
 .stat-container {
   margin-bottom: 10px;
   text-align: center;
   border: 1px solid black;
   width: 15rem;
   padding: 10px 0; }
-  /* line 48, scss/style.scss */
+  /* line 94, scss/style.scss */
   .stat-container:first-child {
     margin-top: 100px; }
-  /* line 51, scss/style.scss */
+  /* line 97, scss/style.scss */
   .stat-container .stat-button {
     padding: 0 20px; }
 
-/* line 56, scss/style.scss */
+/* line 102, scss/style.scss */
 .tooltip {
   border: 1px solid black;
   background-color: white;
   position: absolute;
   z-index: 2; }
 
-/* line 63, scss/style.scss */
+/* line 109, scss/style.scss */
 .main-stat {
   font-size: 1.7rem; }
 
-/* line 68, scss/style.scss */
+/* line 114, scss/style.scss */
 .mod-stat {
   font-size: 1.2rem; }
 
-/* line 72, scss/style.scss */
+/* line 118, scss/style.scss */
 #points-pool-container {
   width: 100vw;
   height: 80px;
@@ -84,15 +126,15 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: white; }
-  /* line 85, scss/style.scss */
+  /* line 131, scss/style.scss */
   #points-pool-container #points-pool {
     font-size: 2rem; }
 
-/* line 91, scss/style.scss */
+/* line 137, scss/style.scss */
 .hidden {
   display: none; }
 
-/* line 95, scss/style.scss */
+/* line 141, scss/style.scss */
 .visible {
   display: block; }
 

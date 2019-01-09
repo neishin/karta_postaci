@@ -16,19 +16,65 @@ body {
 .race-container, .class-container {
     width: 100vw;
     height: 100vh;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+.race-buttons-container {
+    display: flex;
+    width: 80%;
+}
+
+.fas {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    color: lightgray;
+}
+
 .race-button, .class-button {
     width: 50%;
     padding: 10px;
     margin: 10px 0 0 0;
+    flex-grow: 3;
 }
 
+.race-info {
+    position: absolute;
+    top:50vh;
+    left:10vw;
+    border: 1px black solid;
+    background: white;
+    width: 80%;
+    padding: 1rem 1rem 1rem 2rem;
+    line-height: 1.2;
+    list-style-type: square;
+    max-height: 0;
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: center;
+    transition: 1s;
+    overflow: hidden;
+    &.visible {
+        top: 20vh;
+        max-height: 80vh;
+    }
+
+}
+
+.subrace-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .subrace-type {
+        width: 80vw;
+        padding: 10px;
+    }
+
+}
 .race-arrow {
     width: 25%;
 }

@@ -41,7 +41,7 @@ $(document).ready(function () {
                     $('#dwarf-info').remove();
                 }, 900)
             } else {
-                var characteristics = $('<ul class="race-info" id="dwarf-info"><li>Twoja Wytrzymałość jest większa o 2</li><li>Twój rozmiar jest Średni</li><li>Twoja Szybkość to 25 metrów</li><li>Widzisz w ciemności na 60 metrów</li><li>Masz 2 kości na rzut obronny przeciw truciznom. Masz też odporność na trucizny</li><li>Potrafisz używać: topora bojowego, topora, lekkiego młota i młota bojowego</li><li>Umiesz używać (do wyboru): narzędzi kowalskich, środków browarniczych lub narzędzi murarskich</li><li>Kiedy rzucacz Inteligencje(Historię) dotycząco prac w kamieniu to masz PROFICIENCY w Historii i dodajesz podwójne PROF do tego rzutu</li><li>Umiesz mówić i pisać we wspólnym i krasnoludzkim.</li><li>Możesz być Kransoludem Wzgórzowym (+1 do Mądrości i +1 maksymalny punkt życia co poziom) albo Górskim (+2 do Siły i umiejętność posługiwania się lekką i średnią zbroją</li></ul>');
+                var characteristics = $('<ul class="race-info" id="dwarf-info"><li>Twoja Wytrzymałość jest większa o 2</li><li>Twój rozmiar jest Średni</li><li>Twoja Szybkość to 25 metrów</li><li>Widzisz w ciemności na 60 metrów</li><li>Masz 2 kości na rzut obronny przeciw truciznom. Masz też odporność na trucizny</li><li>Potrafisz używać: topora bojowego, topora, lekkiego młota i młota bojowego</li><li>Umiesz używać (do wyboru): narzędzi kowalskich, środków browarniczych lub narzędzi murarskich</li><li>Kiedy rzucacz Inteligencje(Historię) dotycząco prac w kamieniu to masz PROFICIENCY w Historii i dodajesz podwójne PROF do tego rzutu</li><li>Umiesz mówić i pisać we wspólnym i krasnoludzkim.</li><li>Możesz być Kransoludem Wzgórzowym albo Górskim</li></ul>');
                 $('body').append(characteristics);
                 setTimeout(function () {
                     $('#dwarf-info').addClass('visible');
@@ -62,7 +62,7 @@ $(document).ready(function () {
                     $('#elf-info').remove();
                 }, 900)
             } else {
-                var characteristics = $('<ul class="race-info" id="elf-info"><li>Twoja Zręczność jest większa o 2</li><li>Twój rozmiar jest średni</li><li>Twoja Szybkość to 30 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz PROF w umiejętności Percepcja</li><li>Masz 2 kości na rzut obronny przeciw zauroczeniu. Magia nie może cie uśpić</li><li>Nie śpisz, medytujesz 4 godziny dziennie. Liczy się to jak Długi odpoczynek</li><li>Mówisz i piszesz we wspólnym i elfickim</li><li>Możesz być elfem wysokim (Inteligencja +1, umiesz używać długich i krótkich mieczy oraz krótkiego i długiego łuku, znasz jedną sztuczkę rzucaną na Inteligencji oraz znasz jeden dodatkowy język), leśnym (Mądrość +1, umiesz używać długich i krótkich mieczy oraz krótkiego i długiego łuku, twoja Szybkość to 35 metrów, łatwiej ci się ukrywać) lub mrocznym (Charyzma +1, lepsze widzenie w ciemności, jesteś wrażliwy na światło - DISADV na testy Mądrości(Percepcji) polegającej na wzroku podczas dnia, umiesz sztuczkę Tańczące światła, umiesz używać rapierów, krótkich mieczy oraz ręcznej kuszy)</li></ul>');
+                var characteristics = $('<ul class="race-info" id="elf-info"><li>Twoja Zręczność jest większa o 2</li><li>Twój rozmiar jest średni</li><li>Twoja Szybkość to 30 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz PROF w umiejętności Percepcja</li><li>Masz 2 kości na rzut obronny przeciw zauroczeniu. Magia nie może cie uśpić</li><li>Nie śpisz, medytujesz 4 godziny dziennie. Liczy się to jak Długi odpoczynek</li><li>Mówisz i piszesz we wspólnym i elfickim</li><li>Możesz być elfem wysokim, leśnym lub mrocznym</li></ul>');
                 $('body').append(characteristics);
                 setTimeout(function () {
                     $('#elf-info').addClass('visible');
@@ -83,7 +83,7 @@ $(document).ready(function () {
                     $('#halfling-info').remove();
                 }, 900)
             } else {
-                var characteristics = $('<ul class="race-info" id="halfling-info"><li>Twoja Zręczność jest większa o 2</li><li>Twój rozmiar jest mały</li><li>Twoja Szybkość to 25 metrów</li><li>Możesz przerzucić wynik 1 w rzutach na atak, test umiejętności, rzut obronny</li><li>Masz przewagę w rzutach na strach</li><li>Możesz poruszać się przez pole z wrogiem większym od ciebie</li><li>Mówisz i piszesz we wspólnym i halflińskim</li><li>Możesz być halflingiem lekkostopym (Charyzma +1, możesz się chować za istotami większymi od ciebie) lub krzepkim (Wytrzymałość +1, masz przewagę na rzuty obronne przed truciznami oraz masz odporność na trucizny)</li></ul>');
+                var characteristics = $('<ul class="race-info" id="halfling-info"><li>Twoja Zręczność jest większa o 2</li><li>Twój rozmiar jest mały</li><li>Twoja Szybkość to 25 metrów</li><li>Możesz przerzucić wynik 1 w rzutach na atak, test umiejętności, rzut obronny</li><li>Masz przewagę w rzutach na strach</li><li>Możesz poruszać się przez pole z wrogiem większym od ciebie</li><li>Mówisz i piszesz we wspólnym i halflińskim</li><li>Możesz być halflingiem lekkostopym lub krzepkim </li></ul>');
                 $('body').append(characteristics);
                 setTimeout(function () {
                     $('#halfling-info').addClass('visible');
@@ -145,7 +145,7 @@ $(document).ready(function () {
                     $('#gnome-info').remove();
                 }, 900)
             } else {
-                var characteristics = $('<ul class="race-info" id="gnome-info"><li>Twoja Inteligencja jest większa o 2</li><li>Twój rozmiar jest mały</li><li>Twoja Szybkość to 25 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz przewagę na rzuty obronne na magię bazujące na Inteligencji, Mądrości i Charyźmie</li><li>Mówisz i piszesz we wspólnym i gnomim</li><li>Możesz być gnomem leśnym (Zręczność +1, znasz sztuczkę Pomniejsza iluzja, umiesz komunikować się z małymi zwierzętami) lub kamiennym (Wytrzymałość +1, przy rzutach na Inteligencję(Historię) dotyczącą przedmiotów magicznych, alchemicznych lub technologicznych twoja PROF liczy się podwójnie, umiesz używać narzędzi i możesz tworzyć małe urzadzenia) </li></ul>');
+                var characteristics = $('<ul class="race-info" id="gnome-info"><li>Twoja Inteligencja jest większa o 2</li><li>Twój rozmiar jest mały</li><li>Twoja Szybkość to 25 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz przewagę na rzuty obronne na magię bazujące na Inteligencji, Mądrości i Charyźmie</li><li>Mówisz i piszesz we wspólnym i gnomim</li><li>Możesz być gnomem leśnym lub kamiennym</li></ul>');
                 $('body').append(characteristics);
                 setTimeout(function () {
                     $('#gnome-info').addClass('visible');
@@ -181,6 +181,37 @@ $(document).ready(function () {
 
         });
 
+        // fukcja budująca guziki podras
+        function subraceButtons(array1,array2,parent) {
+            for (i = 0; i < array1.length; i++) {
+                var button = $('<div class="subrace-button-container"><button class="subrace-button" id=' + array1[i] + '>' + array2[i] + '</button><p class="race-info-button" id="subrace-info-button-' + array1[i] + '"><i class="fas fa-info-circle fa-2x ' + array1[i] + '-info"></i></p></div>');
+                parent.append(button);
+            }
+        }
+
+
+        // funkcja przypisująca opisy do podras
+
+        function subraceInfo(subrase,description) {
+        $('#subrace-info-button-'+subrase).on('mousedown', function () {
+                if ($('#'+subrase+'-info').length > 0) {
+                $('#'+subrase+'-info').removeClass('visible');
+                setTimeout(function () {
+                    $('#'+subrase+'-info').remove();
+                }, 900)
+            } else {
+                var characteristics = $(description);
+                $('body').append(characteristics);
+                setTimeout(function () {
+                    $('#'+subrase+'-info').addClass('visible');
+                }, 1);
+                characteristics.on('click', function () {
+                    $('#'+subrase+'-info').removeClass('visible');
+                    setTimeout(function () {
+                        $('#'+subrase+'-info').remove();
+                    }, 900)
+                })}});
+        }
 
         // po kliknięciu rasy
         $('#dwarf').on('click', function () {
@@ -188,9 +219,12 @@ $(document).ready(function () {
             $('#con-mod').text('0');
             var subrace = $('<div class="subrace-container">')
             $('body').append(subrace);
-            var dwarfType = $('<button class="dwarf-type subrace-type" id="hillDwarf">Krasnolud wzgórzowy</button><button class="dwarf-type subrace-type" id="mountainDwarf">Krasnolud górski</button>');
+            subraceButtons(['hillDwarf','mountainDwarf'],['Krasnolud wzgórzowy','Krasnolud górski'], subrace);
+
+            subraceInfo('hillDwarf','<ul class="race-info" id="hillDwarf-info"><li>Twoja Mądrość jest większa o 1</li><li>Maksimum twoich punktów życia zwiększa się o 1 na każdym poziomie</li></ul>')
+            subraceInfo('mountainDwarf','<ul class="race-info" id="mountainDwarf-info"><li>Twoja Siła jest większa o 2</li><li>Masz umiejętność posługiwania się lekką i średnią zbroją</li></ul>')
+
             $('.race-container').addClass('hidden');
-            subrace.append(dwarfType);
             $('#hillDwarf').on('click', function () {
                 $('#wis').text('9');
                 $('.stats').removeClass('hidden');
@@ -210,9 +244,11 @@ $(document).ready(function () {
             $('#dex-mod').text('0');
             var subrace = $('<div class="subrace-container">')
             $('body').append(subrace);
-            var type = $('<button class="elf-type subrace-type" id="highElf">Elf wysoki</button><button class="elf-type subrace-type" id="woodElf">Elf leśny</button><button class="elf-type subrace-type" id="darkElf">Elf mroczny</button>');
             $('.race-container').addClass('hidden');
-            subrace.append(type);
+            subraceButtons(['highElf','woodElf','darkElf'],['Elf wysoki','Elf leśny','Elf mroczny'], subrace);
+            subraceInfo('highElf','<ul class="race-info" id="highElf-info"><li>Twoja Inteligencja jest większa o 1</li><li>Umiesz używać długich i krótkich mieczy oraz krótkiego i długiego łuku</li><li>Znasz jedną sztuczkę rzucaną na Inteligencji</li><li>Znasz jeden dodatkowy język</li></ul>')
+            subraceInfo('woodElf','<ul class="race-info" id="woodElf-info"><li>Twoja Mądrość jest większa o 1</li><li>Umiesz używać długich i krótkich mieczy oraz krótkiego i długiego łuku</li>Twoja Szybkość to 35 metrów</li><li>Łatwiej ci się ukrywać</li></ul>')
+            subraceInfo('darkElf','<ul class="race-info" id="darkElf-info"><li>Twoja Charyzma jest większa o 1</li><li>Lepsze widzenie w ciemności</li><li>Jesteś wrażliwy na światło - DISADV na testy Mądrości(Percepcji) polegającej na wzroku podczas dnia</li><li>Umiesz rzucać sztuczkę Tańczące światła</li><li>Umiesz używać rapierów, krótkich mieczy oraz ręcznej kuszy</li></ul>')
             $('#highElf').on('click', function () {
                 $('#int').text('9');
                 $('.stats').removeClass('hidden');
@@ -238,9 +274,10 @@ $(document).ready(function () {
             $('#dex-mod').text('0');
             var subrace = $('<div class="subrace-container">')
             $('body').append(subrace);
-            var type = $('<button class="halfling-type subrace-type" id="lightfootHalfling">Halfling lekkostopy</button><button class="halfling-type subrace-type" id="stoutHalfling">Halfling krzepki</button>');
             $('.race-container').addClass('hidden');
-            subrace.append(type);
+            subraceButtons(['lightfootHalfling','stoutHalfling'],['Halfling lekkostopy','Halfling krzepki'], subrace);
+            subraceInfo('lightfootHalfling','<ul class="race-info" id="lightfootHalfling-info"><li>Twoja Charyzma zwiększa się o 1</li><li>Możesz się chować za istotami większymi od ciebie</li></ul>')
+            subraceInfo('stoutHalfling','<ul class="race-info" id="stoutHalfling-info"><li>Twoja Wytrzymałość jest większa o 1</li><li>Masz przewagę na rzuty obronne przed truciznami oraz masz odporność na trucizny</li></ul>')
             $('#lightfootHalfling').on('click', function () {
                 $('#cha').text('9');
                 $('.stats').removeClass('hidden');
@@ -269,9 +306,10 @@ $(document).ready(function () {
             $('#int-mod').text('0');
             var subrace = $('<div class="subrace-container">')
             $('body').append(subrace);
-            var type = $('<button class="gnome-type subrace-type" id="forestGnome">Gnom leśny</button><button class="gnome-type subrace-type" id="rockGnome">Gnom kamienny</button>');
             $('.race-container').addClass('hidden');
-            subrace.append(type);
+            subraceButtons(['forestGnome','rockGnome'],['Gnom leśny','Gnom kamienny'], subrace);
+            subraceInfo('forestGnome','<ul class="race-info" id="forestGnome-info"><li>Twoja Zręczność jest większa o 1</li><li>Znasz sztuczkę Pomniejsza iluzja</li><li>Umiesz komunikować się z małymi zwierzętami</li></ul>')
+            subraceInfo('rockGnome','<ul class="race-info" id="rockGnome-info"><li>Twoja Wytrzymałość jest większa o 1</li><li>Przy rzutach na Inteligencję(Historię) dotyczącą przedmiotów magicznych, alchemicznych lub technologicznych twoja PROF liczy się podwójnie</li><li>Umiesz używać narzędzi i możesz tworzyć małe urzadzenia</li></ul>')
             $('#forestGnome').on('click', function () {
                 $('#dex').text('9');
                 $('.stats').removeClass('hidden');

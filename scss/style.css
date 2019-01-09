@@ -15,7 +15,7 @@ body {
   justify-content: space-around; }
 
 /* line 16, scss/style.scss */
-.race-container, .class-container {
+.race-container, .subrace-container {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -24,7 +24,7 @@ body {
   flex-direction: column; }
 
 /* line 25, scss/style.scss */
-.race-buttons-container {
+.race-buttons-container, .subrace-button-container {
   display: flex;
   width: 80%; }
 
@@ -35,7 +35,7 @@ body {
   color: lightgray; }
 
 /* line 36, scss/style.scss */
-.race-button, .class-button {
+.race-button, .subrace-button {
   width: 50%;
   padding: 10px;
   margin: 10px 0 0 0;
@@ -59,18 +59,6 @@ body {
   .race-info.visible {
     top: 20vh;
     max-height: 80vh; }
-
-/* line 66, scss/style.scss */
-.subrace-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center; }
-  /* line 72, scss/style.scss */
-  .subrace-container .subrace-type {
-    width: 80vw;
-    padding: 10px; }
 
 /* line 78, scss/style.scss */
 .race-arrow {

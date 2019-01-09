@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: space-around;
 }
-.race-container, .class-container {
+.race-container, .subrace-container {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -22,7 +22,7 @@ body {
     flex-direction: column;
 }
 
-.race-buttons-container {
+.race-buttons-container, .subrace-button-container {
     display: flex;
     width: 80%;
 }
@@ -33,7 +33,7 @@ body {
     color: lightgray;
 }
 
-.race-button, .class-button {
+.race-button, .subrace-button {
     width: 50%;
     padding: 10px;
     margin: 10px 0 0 0;
@@ -63,18 +63,18 @@ body {
 
 }
 
-.subrace-container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    .subrace-type {
-        width: 80vw;
-        padding: 10px;
-    }
-
-}
+//.subrace-container {
+//    height: 100vh;
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: space-around;
+//    align-items: center;
+//    .subrace-type {
+//        width: 80vw;
+//        padding: 10px;
+//    }
+//
+//}
 .race-arrow {
     width: 25%;
 }

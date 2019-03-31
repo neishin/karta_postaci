@@ -6,12 +6,13 @@
     <title>Karta postaci</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="scss/style.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div class='page'>
        <div id='points-pool-container'>
-               <i class="fas fa-caret-square-left fa-2x back-button" onclick="backbutton();"></i>
+               <i class="fas fa-caret-square-left fa-2x back-button" onclick="backbutton"></i>
                 <p>Punkty do rozdania</p>
                 <div id='points-pool'>27</div>
                 <button class="hidden" id='accept-button'>Akceptacja</button>
@@ -20,81 +21,75 @@
 
             <div class='stat-container'>
                 <h2>Siła</h2>
-                <button class='min-button stat-button' id='min-str'>-</button>
-                <div class='main-stat' id="str">8</div>
-                <button class='plus-button stat-button' id='plus-str'>+</button>
+                <div class='stat-buttons-container'>
+                    <button class='plus-button stat-button' id='plus-str'>+</button>
+                    <div class='main-stat' id="str">8</div>
+                    <button class='min-button stat-button' id='min-str'>-</button>
+                </div>
                 <h3>Modyfikator siły</h3>
                 <div class='mod-stat' id="str-mod">-1</div>
             </div>
             <div class='stat-container'>
                 <h2>Zręczność</h2>
-                <button class='min-button stat-button' id='min-dex'>-</button>
-                <div class='main-stat' id="dex">8</div>
-                <button class='plus-button stat-button' id='plus-dex'>+</button>
+                <div class='stat-buttons-container'>
+                    <button class='plus-button stat-button' id='plus-dex'>+</button>
+                    <div class='main-stat' id="dex">8</div>
+                    <button class='min-button stat-button' id='min-dex'>-</button>
+                </div>
                 <h3>Modyfikator zręczności</h3>
                 <div class='mod-stat' id="dex-mod">-1</div>
             </div>
             <div class='stat-container'>
                 <h2>Wytrzymałość</h2>
-                <button class='min-button stat-button' id='min-con'>-</button>
-                <div class='main-stat' id="con">8</div>
-                <button class='plus-button stat-button' id='plus-con'>+</button>
+                <div class='stat-buttons-container'>
+                    <button class='plus-button stat-button' id='plus-con'>+</button>
+                    <div class='main-stat' id="con">8</div>
+                    <button class='min-button stat-button' id='min-con'>-</button>
+                </div>
                 <h3>Modyfikator wytrzymałości</h3>
                 <div class='mod-stat' id="con-mod">-1</div>
             </div>
             <div class='stat-container'>
                 <h2>Inteligencja</h2>
-                <button class='min-button stat-button' id='min-int'>-</button>
-                <div class='main-stat' id="int">8</div>
-                <button class='plus-button stat-button' id='plus-int'>+</button>
+                <div class='stat-buttons-container'>
+                    <button class='plus-button stat-button' id='plus-int'>+</button>
+                    <div class='main-stat' id="int">8</div>
+                    <button class='min-button stat-button' id='min-int'>-</button>
+                </div>
                 <h3>Modyfikator inteligencji</h3>
                 <div class='mod-stat' id="int-mod">-1</div>
             </div>
             <div class='stat-container'>
                 <h2>Mądrość</h2>
-                <button class='min-button stat-button' id='min-wis'>-</button>
-                <div class='main-stat' id="wis">8</div>
-                <button class='plus-button stat-button' id='plus-wis'>+</button>
+                <div class='stat-buttons-container'>
+                    <button class='plus-button stat-button' id='plus-wis'>+</button>
+                    <div class='main-stat' id="wis">8</div>
+                    <button class='min-button stat-button' id='min-wis'>-</button>
+                </div>
                 <h3>Modifikator mądrości</h3>
                 <div class='mod-stat' id="wis-mod">-1</div>
             </div>
             <div class='stat-container'>
                 <h2>Charyzma</h2>
-                <button class='min-button stat-button' id='min-cha'>-</button>
-                <div class='main-stat' id="cha">8</div>
-                <button class='plus-button stat-button' id='plus-cha'>+</button>
+                <div class='stat-buttons-container'>
+                    <button class='plus-button stat-button' id='plus-cha'>+</button>
+                    <div class='main-stat' id="cha">8</div>
+                    <button class='min-button stat-button' id='min-cha'>-</button>
+                </div>
                 <h3>Modyfikator charyzmy</h3>
                 <div class='mod-stat' id="cha-mod">-1</div>
             </div>
         </div>
-        <!--
-    <div class='stats'>
-        <div class='stat-container'>
-            <h2>Klasa pancerza</h2>
-            <div class='main-stat' id="armor-class">10</div>
-        </div>
-        <div class='stat-container'>
-            <h2>Inicjatywa</h2>
-            <div class='main-stat' id="initiative">0</div>
-        </div>
-        <div class='stat-container'>
-            <h2>Punkty życia</h2>
-            <p>Maksymalne:</p>
-            <div class='main-stat' id="hit-points-max">0</div>
-            <p>Obecnie:</p>
-            <div class='main-stat' id="hit-points-current">0</div>
-            <p>Kości życia:</p>
-            <div class='main-stat' id="hit-dice">0</div>
-        </div>
-        <div class='stat-container'>
-            <h2>Bazowa szybkość</h2>
-            <div class='main-stat' id="speed">30</div>
-        </div>
-    </div>
--->
 
+        
+    </div>
+    <div id='buttons'>
+        <button>Cechy drugorzędne</button>
+        <button>Umiejętności</button>
+        <button>Zapisz postać</button>
+        <button>Załaduj postać</button>
     </div>
 </body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
 <script src="js/app.js"></script>
 </html>

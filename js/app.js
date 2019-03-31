@@ -1,8 +1,6 @@
 $(document).ready(function () {
 
-    function backbutton() {
-        location.reload();
-    }
+    
 
     // wybór rasy
     function chooseRase() {
@@ -268,32 +266,22 @@ $(document).ready(function () {
                 subrace.remove();
                 $('#points-pool-container').css('display', 'flex');}
             }
+            
+            const halfElfAddStats = (id,stat) => {
+                $(id).on('click', function () {
+                    $(stat).text('9');
+                    $('#halfelf-points').text(pool-=1);
+                    $(id).css('display','none');
+                    goToStats();
+                })
+            }
 
-            $('#halfelfStr').on('click', function () {
-                $('#str').text('9');
-                $('#halfelf-points').text(pool-=1);
-                goToStats();
-            })
-            $('#halfelfDex').on('click', function () {
-                $('#dex').text('9');
-                $('#halfelf-points').text(pool-=1);
-                goToStats();
-            })
-            $('#halfelfCon').on('click', function () {
-                $('#con').text('9');
-                $('#halfelf-points').text(pool-=1);
-                goToStats();
-            })
-            $('#halfelfInt').on('click', function () {
-                $('#int').text('9');
-                $('#halfelf-points').text(pool-=1);
-                goToStats();
-            })
-            $('#halfelfWis').on('click', function () {
-                $('#wis').text('9');
-                $('#halfelf-points').text(pool-=1);
-                goToStats();
-            })
+            halfElfAddStats('#halfelfStr','#str');
+            halfElfAddStats('#halfelfDex','#dex');
+            halfElfAddStats('#halfelfCon','#con');
+            halfElfAddStats('#halfelfInt','#int');
+            halfElfAddStats('#halfelfWis','#wis');
+
         });
         $('#halforc').on('click', function () {
             $('#con').text('9');
@@ -324,7 +312,7 @@ $(document).ready(function () {
         var statNumber = parseInt(currentStat);
         var poolNumber = parseInt(currentPool);
         if (statNumber == 8) {
-            alert("nie można zejść poniżej 8")
+            alert("Cecha nie może być niższa niż 8")
         } else if (statNumber > 8 && statNumber < 14) {
             $(stat).text(statNumber -= 1);
             $('#points-pool').text(poolNumber += 1);
@@ -346,12 +334,15 @@ $(document).ready(function () {
         var mod = $(mod);
         var statNumber = parseInt(currentStat);
         var poolNumber = parseInt(currentPool);
-        if (currentPool <= 0 || (currentPool == 1 && statNumber >= 13)) {
-            alert('nie masz już punktów');
+        if (currentPool <= 0) {
+            alert('Nie masz już punktów');
+            return;
+        } else if ((currentPool == 1 && statNumber >= 13)) {
+            alert('Masz za mało punktów');
             return;
         }
-        if (statNumber == 15) {
-            alert('Nie można mieć wiecej niż 15')
+        if (statNumber == 20) {
+            alert('Nie można mieć wiecej niż 20')
         } else if (statNumber >= 13) {
             $(stat).text(statNumber += 1);
             $('#points-pool').text(poolNumber -= 2);
@@ -365,23 +356,30 @@ $(document).ready(function () {
     }
 
     // funkcja wyliczająca modyfikator statu
+
     function modState(statNumber, mod) {
-        if (statNumber == 8 || statNumber == 9) {
+        if (statNumber < 10 ) {
             mod.text('-1');
-        } else if (statNumber == 10 || statNumber == 11) {
+        } else if (statNumber >= 10 && statNumber < 12) {
             mod.text('0');
-        } else if (statNumber == 12 || statNumber == 13) {
+        } else if (statNumber >= 12 && statNumber < 14) {
             mod.text('+1');
-        } else if (statNumber == 14 || statNumber == 15) {
+        } else if (statNumber >= 14 && statNumber < 16) {
             mod.text('+2');
+        } else if (statNumber >= 16 && statNumber < 18) {
+            mod.text('+3');
+        } else if (statNumber >= 18 && statNumber < 20) {
+            mod.text('+4');
+        } else {
+            mod.text('+5');
         }
     }
 
     // funkcja uruchamiająca przycisk Akceptuj po rozdaniu punktów
+
     function acceptAllocation() {
-        var currentPool = $('#points-pool').text();
-        var poolNumber = parseInt(currentPool);
-        if (poolNumber === 0) {
+        var currentPool = parseInt($('#points-pool').text());
+        if (currentPool === 0) {
             $('#points-pool-container').css('height', '110px')
             $('.stat-container:first-child').css('margin-top', '125px')
             $('#accept-button').removeClass('hidden')
@@ -396,63 +394,37 @@ $(document).ready(function () {
         })
     }
 
-    // zminusowane Siły
-    $('#min-str').on('click', function () {
-        minStat('#str', '#str-mod')
-    });
+    // minus button do stata
 
-    // splusowanie siły
-    $('#plus-str').on('click', function () {
-        plusStat('#str', '#str-mod')
-    })
+    const removeStat = (button,stat,modifier) => {
+        $(button).on('click', function () {
+            minStat(stat, modifier)
+        })
+    }
 
-    // zminusowanie Zręczności
-    $('#min-dex').on('click', function () {
-        minStat('#dex', '#dex-mod')
-    });
+    removeStat('#min-str', '#str', '#str-mod');
+    removeStat('#min-dex', '#dex', '#dex-mod');
+    removeStat('#min-con', '#con', '#con-mod');
+    removeStat('#min-int', '#int', '#int-mod');
+    removeStat('#min-wis', '#wis', '#wis-mod');
+    removeStat('#min-cha', '#cha', '#cha-mod');
 
-    // splusowanie zrecznosci
-    $('#plus-dex').on('click', function () {
-        plusStat('#dex', '#dex-mod')
-    })
+    // plus button do stata
 
-    // zminusowanie wytrzymalosci
-    $('#min-con').on('click', function () {
-        minStat('#con', '#con-mod')
-    });
+    const addStat = (button,stat,modifier) => {
+        $(button).on('click', function () {
+            plusStat(stat, modifier)
+        })
+    }
 
-    // splusowanie wytrzymalosci
-    $('#plus-con').on('click', function () {
-        plusStat('#con', '#con-mod')
-    })
+    addStat('#plus-str','#str', '#str-mod');
+    addStat('#plus-dex','#dex', '#dex-mod');
+    addStat('#plus-con','#con', '#con-mod');
+    addStat('#plus-int','#int', '#int-mod');
+    addStat('#plus-wis','#wis', '#wis-mod');
+    addStat('#plus-cha','#cha', '#cha-mod');
 
-    // zminusowanie inta
-    $('#min-int').on('click', function () {
-        minStat('#int', '#int-mod')
-    });
-
-    // splusowanie inta
-    $('#plus-int').on('click', function () {
-        plusStat('#int', '#int-mod')
-    })
-
-    // zminusowanie wisdom
-    $('#min-wis').on('click', function () {
-        minStat('#wis', '#wis-mod')
-    });
-
-    // splusowanie wisdom
-    $('#plus-wis').on('click', function () {
-        plusStat('#wis', '#wis-mod')
-    })
-
-    // zminusowanie cha
-    $('#min-cha').on('click', function () {
-        minStat('#cha', '#cha-mod')
-    });
-
-    // splusowanie cha
-    $('#plus-cha').on('click', function () {
-        plusStat('#cha', '#cha-mod')
-    })
+    function backbutton() {
+        location.reload();
+    }
 })

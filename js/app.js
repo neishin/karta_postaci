@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    
-
     // wybór rasy
     function chooseRase() {
         $('.stats').addClass('hidden');
@@ -293,17 +291,6 @@ $(document).ready(function () {
 
     chooseRase();
 
-    // wybór klasy
-    //    function chooseClass() {
-    //        $('.stats').addClass('hidden');
-    //        var classContainer = $('<div>', {class: 'class-container'});
-    //        $('body').append(classContainer);
-    //        var fighterButton = $('<button>', {class: 'class-button', id: 'fighter'}).text('Wojownik');
-    //        $('.classContainer').append(fighterButton);
-    //    }
-    //
-    //    chooseClass();
-
     // funkcja zmniejszająca stat
     function minStat(stat, mod) {
         var currentStat = $(stat).text();
@@ -324,8 +311,6 @@ $(document).ready(function () {
         modState(statNumber, mod);
         acceptAllocation();
     }
-
-
 
     // funkcja zwiększająca stat
     function plusStat(stat, mod) {
@@ -390,7 +375,9 @@ $(document).ready(function () {
             $('.stat-button').addClass('hidden');
             $('#points-pool-container').css('display', 'none');
             $('#points-pool-container').css('display', 'none');
-            $('.stat-container:first-child').css('margin-top', '10px')
+            $('.stat-container:first-child').css('margin-top', '10px');
+            $('.race-container').remove();
+            $('#buttons').removeClass('hidden');
         })
     }
 
@@ -424,7 +411,55 @@ $(document).ready(function () {
     addStat('#plus-wis','#wis', '#wis-mod');
     addStat('#plus-cha','#cha', '#cha-mod');
 
+    // przycisk wstecz
+
     function backbutton() {
         location.reload();
     }
+
+    // przycisk pokazujący cechy drugorzędne
+
+
+
+    const secondaryAttributes = () => {
+        let armorClass = 10;
+        let hitPoints = 5;
+        let hitDice = 1+'d'+6;
+        let speed = 30;
+        let proficiency = 1;
+        const secondaryAttributesContainer = $('<div>', {id: 'secondary-attributes-container'});
+        $('body').append(secondaryAttributesContainer);
+        const secondaryAttirbutesLeft = $('<div>', {class: 'secondary-attributes-half'});
+        const secondaryAttirbutesRight = $('<div>', {class: 'secondary-attributes-half'});
+        secondaryAttributesContainer.append(secondaryAttirbutesLeft);
+        secondaryAttributesContainer.append(secondaryAttirbutesRight);
+        let armorClassBox = $('<div>', {class: 'secondary-attributes-box'});
+        let armorClassHeader = $('<h2>');
+        let armorClassValue = $('<h1>');
+        armorClassHeader.text('Klasa Pancerza');
+        armorClassValue.text(armorClass + parseInt($('#dex-mod')[0].innerHTML));
+        armorClassBox.append(armorClassHeader);
+        armorClassBox.append(armorClassValue);
+        secondaryAttirbutesLeft.append(armorClassBox);
+        let hitPointBox = $('<div>', {class: 'secondary-attributes-box'});
+        let hitPointHeader = $('<h2>');
+        hitPointHeader.text('Punkty żywotności');
+        let hitPointValue = $('<h1>');
+        hitPointValue.text(hitPoints);
+        secondaryAttirbutesLeft.append(hitPointBox);
+        hitPointBox.append(hitPointHeader);
+        hitPointBox.append(hitPointValue);
+
+        let hitDiceBox = $('<div>', {class: 'secondary-attributes-box'});
+        let hitDiceHeader = $('<h2>');
+        hitDiceHeader.text('Kości żywotności');
+        let hitDiceValue = $('<h1>');
+        hitDiceValue.text(hitDice);
+        secondaryAttirbutesLeft.append(hitDiceBox);
+        hitDiceBox.append(hitDiceHeader);
+        hitDiceBox.append(hitDiceValue);
+    }
+
+    $('#secondary-attributes').on('click', secondaryAttributes)
+
 })

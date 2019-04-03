@@ -367,6 +367,7 @@ $(document).ready(function () {
         if (currentPool === 0) {
             $('#points-pool-container').css('height', '110px')
             $('.stat-container:first-child').css('margin-top', '125px')
+            $('.stat-container:nth-child(2)').css('margin-top', '125px')
             $('#accept-button').removeClass('hidden')
         } else {
             $('#accept-button').addClass('hidden')
@@ -375,7 +376,8 @@ $(document).ready(function () {
             $('.stat-button').addClass('hidden');
             $('#points-pool-container').css('display', 'none');
             $('#points-pool-container').css('display', 'none');
-            $('.stat-container:first-child').css('margin-top', '10px');
+            $('.stat-container:first-child').css('margin-top', '10vh');
+            $('.stat-container:nth-child(2)').css('margin-top', '10vh');
             $('.race-container').remove();
             $('#buttons').removeClass('hidden');
         })
@@ -417,18 +419,30 @@ $(document).ready(function () {
         location.reload();
     }
 
-    // przycisk pokazujący cechy drugorzędne
+    // cechy drugorzędne
 
 
+
+    let armorClass = 10;
+    let hitPoints = 5+parseInt($('#con-mod')[0].innerHTML);
+    let hitDice = 1+'d'+6;
+    let speed = 30;
+    let proficiency = 1;
+    let initiative = parseInt($('#dex-mod')[0].innerHTML);
 
     const secondaryAttributes = () => {
-        let armorClass = 10;
-        let hitPoints = 5;
-        let hitDice = 1+'d'+6;
-        let speed = 30;
-        let proficiency = 1;
         const secondaryAttributesContainer = $('<div>', {id: 'secondary-attributes-container'});
         $('body').append(secondaryAttributesContainer);
+
+        const closeSecondaryAttributesButton = $('<div>', {class: 'close-secondary-attributes'});
+        secondaryAttributesContainer.append(closeSecondaryAttributesButton);
+        const closeSecondaryAttributesIcon = $('<i>', {class: 'fas fa-times fa-2x'});
+        closeSecondaryAttributesButton.append(closeSecondaryAttributesIcon);
+
+        closeSecondaryAttributesButton.on('click', () => {
+            secondaryAttributesContainer.remove();
+        })
+
         const secondaryAttirbutesLeft = $('<div>', {class: 'secondary-attributes-half'});
         const secondaryAttirbutesRight = $('<div>', {class: 'secondary-attributes-half'});
         secondaryAttributesContainer.append(secondaryAttirbutesLeft);
@@ -458,8 +472,119 @@ $(document).ready(function () {
         secondaryAttirbutesLeft.append(hitDiceBox);
         hitDiceBox.append(hitDiceHeader);
         hitDiceBox.append(hitDiceValue);
+
+        let initiativeBox = $('<div>', {class: 'secondary-attributes-box'});
+        let initiativeHeader = $('<h2>');
+        initiativeHeader.text('Inicjatywa');
+        let initiativeValue = $('<h1>');
+        initiativeValue.text(initiative);
+        secondaryAttirbutesRight.append(initiativeBox);
+        initiativeBox.append(initiativeHeader);
+        initiativeBox.append(initiativeValue);
+
+        let speedBox = $('<div>', {class: 'secondary-attributes-box'});
+        let speedHeader = $('<h2>');
+        speedHeader.text('Szybkość');
+        let speedValue = $('<h1>');
+        speedValue.text(speed);
+        secondaryAttirbutesRight.append(speedBox);
+        speedBox.append(speedHeader);
+        speedBox.append(speedValue);
+         let proficiencyBox = $('<div>', {class: 'secondary-attributes-box'});
+        let proficiencyHeader = $('<h2>');
+        let proficiencyValue = $('<h1>');
+        proficiencyHeader.text('PROF');
+        proficiencyValue.text(proficiency);
+        proficiencyBox.append(proficiencyHeader);
+        proficiencyBox.append(proficiencyValue);
+        secondaryAttirbutesRight.append(proficiencyBox);
+
     }
 
     $('#secondary-attributes').on('click', secondaryAttributes)
 
+    // wybór klasy
+
+    let chosenClass = 'fighter';
+
+
+
+    const chooseClass = () => {
+        console.log('dupa')
+        const classContainer = $('<div>', {id: 'class-container'});
+        $('body').append(classContainer);
+
+        // funkcja robiąca przyciski do wyboru klasy
+
+        function classButtons(class1, Class2) {
+            var ButtonsContainer = $('<div>', {
+                id: 'class-buttons-container'
+            });
+            classContainer.append(ButtonsContainer);
+            var Button = $('<button class="class-button" id=' + class1 + '>' + Class2 + '</button><p class="class-info-button" id="class-info-button-' + class1 + '"><i class="fas fa-info-circle fa-2x ' + class1 + '-info"></i></p>');
+            ButtonsContainer.append(Button);
+        }
+
+        classButtons('barbarian', 'Barbarzyńca');
+        classButtons('bard', 'Bard');
+        classButtons('warlock', 'Czarnoksiężnik');
+        classButtons('sorcerer', 'Czarownik');
+        classButtons('druid', 'Druid');
+        classButtons('cleric', 'Kleryk');
+        classButtons('ranger', 'Łowca');
+        classButtons('wizard', 'Mag');
+        classButtons('Monk', 'Mnich');
+        classButtons('paladin', 'Paladyn');
+        classButtons('rogue', 'Rzezimieszek');
+        classButtons('fighter', 'Wojownik');
+
+        // funkcja do info o klasach
+
+        function classInfo(klasa, text) {
+            $('#class-info-button-' + klasa).on('mousedown', function () {
+                if ($('#' + klasa + '-info').length > 0) {
+                    $('#' + klasa + '-info').removeClass('visible');
+                    setTimeout(function () {
+                        $('#' + klasa + '-info').remove();
+                    }, 900)
+                } else {
+                    var characteristics = $(text);
+                    $('body').append(characteristics);
+                    setTimeout(function () {
+                        $('#' + klasa + '-info').addClass('visible');
+                    }, 1);
+                    characteristics.on('click', function () {
+                        $('#' + klasa + '-info').removeClass('visible');
+                        setTimeout(function () {
+                            $('#' + klasa + '-info').remove();
+                        }, 900)
+                    })
+                }
+            })
+        }
+
+        classInfo('barbarian', '<ul class="class-info" id="barbarian-info"><li>Poteżni wojownicy o dzikich korzeniach, którzy w walce wpadają w bojowy szał</li><li>Kostka życia: d12</li><li>Podstawowa statystyka: Siła</li><li>PROF do rzutów obronnych: Siła i Wytrzymałość</li><li>Prof do broni i zbroi: Zbroje lekkie i średnie, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('bard', '<ul class="class-info" id="bard-info"><li>Inspirujący magicy, w których muzyce pobrzmiewają echa dźwięków kreacji</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Zręczność i Charyzma</li><li>Prof do broni i zbroi: Zbroje lekkie, bronie proste, ręczne kusze, długie i krótkie miecze, rapiery</li></ul>');
+        classInfo('cleric', '<ul class="class-info" id="cleric-info"><li>Kapłański czempion, który dzierży boską magię by służyć sile wyższej</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Mądrość</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Zbroje lekkie i średnie, tarcze, bronie proste</li></ul>');
+        classInfo('druid', '<ul class="class-info" id="druid-info"><li>Kapłan Starej Wiary władający siłami natury i przyjmujący kształt zwierząt</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Mądrość</li><li>PROF do rzutów obronnych: Mądrość i Inteligencja</li><li>Prof do broni i zbroi: Zbroje lekkie i średnie (niemetalowe), tarcze (niemetalowe), pałki, sztylety, kije, sejmitary, sierpy, proce, dzidy</li></ul>');
+        classInfo('fighter', '<ul class="class-info" id="fighter-info"><li>Mistrz walki, w rękach którego każdy przedmiot jest zabójczą bronią</li><li>Kostka życia: d10</li><li>Podstawowa statystyka: Siła lub Zręczność</li><li>PROF do rzutów obronnych: Siła i Wytrzymałość</li><li>Prof do broni i zbroi: Wszystkie rodzaje zbroi, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('monk', '<ul class="class-info" id="monk-info"><li>Mistrz sztuk walki, który dąży do perfekcji ciała i ducha</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Zręczność i Mądrość</li><li>PROF do rzutów obronnych: Siła i Zręczność</li><li>Prof do broni i zbroi: Bronie proste i krótkie miecze</li></ul>');
+        classInfo('paladin', '<ul class="class-info" id="paladin-info"><li>Święty wojownik podczas boskiej misji</li><li>Kostka życia: d10</li><li>Podstawowa statystyka: Siła i Charyzma</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Wszystkie rodzaje zbroi, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('ranger', '<ul class="class-info" id="ranger-info"><li>Wojownik używając broni i magii by walczyć z potworami na granicy cywilizacji</li><li>Kostka życia: d10</li><li>Podstawowa statystyka: Zręczność i Mądrość</li><li>PROF do rzutów obronnych: Siła i Zręczność</li><li>Prof do broni i zbroi:Zbroje lekkie i średnie, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('rogue', '<ul class="class-info" id="rogue-info"><li>Łotrzyk używający cieni i oszustw by pokonać przeszkody i wrogów</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Zręczność</li><li>PROF do rzutów obronnych: Zręczność i Inteligencja</li><li>Prof do broni i zbroi: Lekkie zbroje, proste bronie, ręczne kusze, długie i krótkie miecze, rapiery</li></ul>');
+        classInfo('sorcerer', '<ul class="class-info" id="sorcerer-info"><li>Bohater używający magii płynącej z darów lub lini krwi</li><li>Kostka życia: d6</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Wytrzymałość i Charyzma</li><li>Prof do broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
+        classInfo('warlock', '<ul class="class-info" id="warlock-info"><li>Bohater używający magii płynącej z paktu z nieludzką istotą</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Lekkie zbroje, bronie proste</li></ul>');
+        classInfo('wizard', '<ul class="class-info" id="wizard-info"><li>Uczony, który za pomocą wyuczonej magii nagina strukturę rzeczywistości</li><li>Kostka życia: d6</li><li>Podstawowa statystyka: Inteligencja</li><li>PROF do rzutów obronnych: Inteligencja i Mądrość</li><li>Prof do broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
+
+        // button powracający
+
+        var backButton = $('<i class="fas fa-caret-square-left fa-2x back-button"></i>');
+        classContainer.prepend(backButton);
+        backButton.on('click', function () {
+            location.reload();
+        })
+
+    }
+
+    $('#classes').on('click', chooseClass)
 })

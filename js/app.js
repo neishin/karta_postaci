@@ -96,15 +96,6 @@ $(document).ready(function () {
             }
         }
 
-//                function closePopup() {
-//                    $(window).on('click', function () {
-//                    console.log('dupa');
-//                    $('#' + subrase + '-info').removeClass('visible');
-//                    setTimeout(function () {
-//                        $('#' + subrase + '-info').remove();
-//                    }, 900)
-//                })
-//                }
 
         // funkcja przypisująca opisy do podras
                 function subraceInfo(subrase,description) {
@@ -132,6 +123,7 @@ $(document).ready(function () {
 
         // po kliknięciu rasy
         $('#dwarf').on('click', function () {
+            speed = 25;
             $('#con').text('10');
             $('#con-mod').text('0');
             var subrace = $('<div class="subrace-container">')
@@ -158,6 +150,7 @@ $(document).ready(function () {
             })
         });
         $('#elf').on('click', function () {
+            speed = 30;
             $('#dex').text('10');
             $('#dex-mod').text('0');
             var subrace = $('<div class="subrace-container">')
@@ -188,6 +181,7 @@ $(document).ready(function () {
         });
 
         $('#halfling').on('click', function () {
+            speed = 25;
             $('#dex').text('10');
             $('#dex-mod').text('0');
             var subrace = $('<div class="subrace-container">')
@@ -210,16 +204,19 @@ $(document).ready(function () {
             })
         });
         $('#human').on('click', function () {
+            speed = 30;
             $('.main-stat').text('9');
             clickAccept();
         });
         $('#dragonborn').on('click', function () {
+            speed = 30;
             $('#str').text('10');
             $('#str-mod').text('0');
             $('#cha').text('9');
             clickAccept();
         });
         $('#gnome').on('click', function () {
+            speed = 25;
             $('#int').text('10');
             $('#int-mod').text('0');
             var subrace = $('<div class="subrace-container">')
@@ -248,6 +245,7 @@ $(document).ready(function () {
             clickAccept();
         });
         $('#halfelf').on('click', function () {
+            speed = 30;
             $('#cha').text('10');
             $('#cha-mod').text('0');
             var subrace = $('<div class="subrace-container">')
@@ -282,6 +280,7 @@ $(document).ready(function () {
 
         });
         $('#halforc').on('click', function () {
+            speed = 30;
             $('#con').text('9');
             $('#str').text('10');
             $('#str-mod').text('0');
@@ -372,22 +371,26 @@ $(document).ready(function () {
         } else {
             $('#accept-button').addClass('hidden')
         }
-        $('#accept-button').on('click', function () {
+
+    }
+
+    $('#accept-button').on('click', function (event) {
+            console.log('zaakceptowałes');
+            chooseClass();
             $('.stat-button').addClass('hidden');
-            $('#points-pool-container').css('display', 'none');
             $('#points-pool-container').css('display', 'none');
             $('.stat-container:first-child').css('margin-top', '10vh');
             $('.stat-container:nth-child(2)').css('margin-top', '10vh');
             $('.race-container').remove();
             $('#buttons').removeClass('hidden');
-        })
-    }
 
+        })
     // minus button do stata
 
     const removeStat = (button,stat,modifier) => {
         $(button).on('click', function () {
-            minStat(stat, modifier)
+            minStat(stat, modifier);
+            $('#accept-button').removeClass('visible')
         })
     }
 
@@ -507,10 +510,71 @@ $(document).ready(function () {
 
     let chosenClass = 'fighter';
 
-
+    const basicClasses = [
+        {
+            name: "barbarian",
+            hitDie: 12,
+            proficiency: 2
+        },
+        {
+            name: "bard",
+            hitDie: 8,
+            proficiency: 2
+        },
+        {
+            name: "cleric",
+            hitDie: 8,
+            proficiency: 2
+        },
+        {
+            name: "druid",
+            hitDie: 8,
+            proficiency: 2
+        },
+        {
+            name: "fighter",
+            hitDie: 10,
+            proficiency: 2
+        },
+        {
+            name: "monk",
+            hitDie: 8,
+            proficiency: 2
+        },
+        {
+            name: "paladin",
+            hitDie: 10,
+            proficiency: 2
+        },
+        {
+            name: "ranger",
+            hitDie: 8,
+            proficiency: 2
+        },
+        {
+            name: "rogue",
+            hitDie: 8,
+            proficiency: 2
+        },
+        {
+            name: "sorcerer",
+            hitDie: 6,
+            proficiency: 2
+        },
+        {
+            name: "warlock",
+            hitDie: 8,
+            proficiency: 2
+        },
+        {
+            name: "wizard",
+            hitDie: 6,
+            proficiency: 2
+        }
+    ]
 
     const chooseClass = () => {
-        console.log('dupa')
+        console.log('click')
         const classContainer = $('<div>', {id: 'class-container'});
         $('body').append(classContainer);
 
@@ -576,6 +640,40 @@ $(document).ready(function () {
         classInfo('warlock', '<ul class="class-info" id="warlock-info"><li>Bohater używający magii płynącej z paktu z nieludzką istotą</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Lekkie zbroje, bronie proste</li></ul>');
         classInfo('wizard', '<ul class="class-info" id="wizard-info"><li>Uczony, który za pomocą wyuczonej magii nagina strukturę rzeczywistości</li><li>Kostka życia: d6</li><li>Podstawowa statystyka: Inteligencja</li><li>PROF do rzutów obronnych: Inteligencja i Mądrość</li><li>Prof do broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
 
+        // funkcja ustawiająca klasę
+
+        function clickClassButton (klasa) {
+            $('#'+klasa).on('click', () => {
+                chosenClass = klasa;
+
+                basicClasses.forEach(function(item) {
+                    if (item.name === klasa) {
+                        const hitPointCalc = item.hitDie/2 + 1;
+                        hitPoints = hitPointCalc+parseInt($('#con-mod')[0].innerHTML);
+                        hitDice = 'd'+item.hitDie;
+                        proficiency = item.proficiency;
+                    }
+                })
+
+
+                $('#class-container').remove();
+            })
+        }
+
+        clickClassButton('barbarian');
+        clickClassButton('bard');
+        clickClassButton('cleric');
+        clickClassButton('druid');
+        clickClassButton('fighter');
+        clickClassButton('monk');
+        clickClassButton('paladin');
+        clickClassButton('ranger');
+        clickClassButton('rogue');
+        clickClassButton('sorcerer');
+        clickClassButton('warlock');
+        clickClassButton('wizard');
+
+
         // button powracający
 
         var backButton = $('<i class="fas fa-caret-square-left fa-2x back-button"></i>');
@@ -586,5 +684,5 @@ $(document).ready(function () {
 
     }
 
-    $('#classes').on('click', chooseClass)
-})
+
+    })

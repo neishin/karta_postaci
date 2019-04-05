@@ -1,5 +1,45 @@
 $(document).ready(function () {
 
+    // funkcja testu d20
+
+    const roll20 = (mod) => {
+        let crit = false
+        let roll = Math.floor(Math.random()*20+1);
+        if (roll === 20) {
+            crit = true;
+        }
+        let result = roll + parseInt(mod);
+
+        // pop up z wynikiem
+
+        const rollPop = $('<div>', {class: "roll-pop-container"});
+        if (crit === true) {
+            rollPop.addClass('crit');
+            rollPop.html(`<h1>Krytyk!</h1><h2>${result}</h2>`)
+        } else {
+            rollPop.html(`<h3>Wynik:</h3><h2>${result}</h2>`)
+        }
+        $('body').append(rollPop);
+
+//        const rollOKButton = $('<button>', {id: 'roll-OK-button'});
+//        rollOKButton.text('OK');
+//        rollPop.append(rollOKButton);
+//        rollOKButton.on('click', () => rollPop.remove())
+
+
+        $('body').on('click', function() {
+            rollPop.remove();
+        });
+        $(".skill-test-button").on('click', function(e) {
+             e.stopPropagation(); // this stops the event from bubbling up to the body
+        });
+
+
+
+    }
+
+    $('#roll20').on('click', roll20)
+
     // wybór rasy
     function chooseRase() {
         $('.stats').addClass('hidden');
@@ -52,12 +92,15 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $('#' + rasa + '-info').addClass('visible');
                     }, 1);
-                    characteristics.on('click', function () {
+                     $('body').on('click', function () {
                         $('#' + rasa + '-info').removeClass('visible');
                         setTimeout(function () {
                             $('#' + rasa + '-info').remove();
                         }, 900)
                     })
+                    $('.' + rasa + '-info').on('click', function(e) {
+                     e.stopPropagation();
+                    });
                 }
             })
         }
@@ -111,12 +154,15 @@ $(document).ready(function () {
                         setTimeout(function () {
                             $('#'+subrase+'-info').addClass('visible');
                         }, 1);
-                        characteristics.on('click', function () {
+                        $('body').on('click', function () {
                             $('#'+subrase+'-info').removeClass('visible');
                             setTimeout(function () {
                                 $('#'+subrase+'-info').remove();
                             }, 900)
                         })
+                        $('#subrace-info-button-'+subrase).on('click', function(e) {
+                            e.stopPropagation();
+                        });
                     }
                 })
                 }
@@ -322,7 +368,7 @@ $(document).ready(function () {
             alert('Nie masz już punktów');
             return;
         } else if ((currentPool == 1 && statNumber >= 13)) {
-            alert('Masz za mało punktów');
+            alert('Potrzebujesz 2 punktów, żeby podnieść cechę powyżej 13');
             return;
         }
         if (statNumber == 20) {
@@ -375,7 +421,6 @@ $(document).ready(function () {
     }
 
     $('#accept-button').on('click', function (event) {
-            console.log('zaakceptowałes');
             chooseClass();
             $('.stat-button').addClass('hidden');
             $('#points-pool-container').css('display', 'none');
@@ -574,7 +619,6 @@ $(document).ready(function () {
     ]
 
     const chooseClass = () => {
-        console.log('click')
         const classContainer = $('<div>', {id: 'class-container'});
         $('body').append(classContainer);
 
@@ -597,7 +641,7 @@ $(document).ready(function () {
         classButtons('cleric', 'Kleryk');
         classButtons('ranger', 'Łowca');
         classButtons('wizard', 'Mag');
-        classButtons('Monk', 'Mnich');
+        classButtons('monk', 'Mnich');
         classButtons('paladin', 'Paladyn');
         classButtons('rogue', 'Rzezimieszek');
         classButtons('fighter', 'Wojownik');
@@ -684,5 +728,144 @@ $(document).ready(function () {
 
     }
 
+    const skillList = [
+        {
+            name: 'Akrobatyka',
+            attribute: '#dex-mod',
+            check: false,
+        },
+        {
+            name: 'Atletyka',
+            attribute: '#str-mod',
+            check: false,
+        },
+        {
+            name: 'Historia',
+            attribute: '#int-mod',
+            check: false,
+        },
+        {
+            name: 'Intuicja',
+            attribute: '#wis-mod',
+            check: false,
+        },
+        {
+            name: 'Medycyna',
+            attribute: '#wis-mod',
+            check: false,
+        },
+        {
+            name: 'Opieka nad zwierzętami',
+            attribute: '#wis-mod',
+            check: false,
+        },
+        {
+            name: 'Oszustwo',
+            attribute: '#cha-mod',
+            check: false,
+        },
+        {
+            name: 'Percepcja',
+            attribute: '#wis-mod',
+            check: false,
+        },
+        {
+            name: 'Perswazja',
+            attribute: '#cha-mod',
+            check: false,
+        },
+        {
+            name: 'Przyroda',
+            attribute: '#int-mod',
+            check: false,
+        },
+        {
+            name: 'Religia',
+            attribute: '#int-mod',
+            check: false,
+        },
+        {
+            name: 'Skradanie się',
+            attribute: '#dex-mod',
+            check: false,
+        },
+        {
+            name: 'Sztuka przetrwania',
+            attribute: '#wis-mod',
+            check: false,
+        },
+        {
+            name: 'Śledztwo',
+            attribute: '#int-mod',
+            check: false,
+        },
+        {
+            name: 'Wiedza tajemna',
+            attribute: '#int-mod',
+            check: false,
+        },
+        {
+            name: 'Występy',
+            attribute: '#cha-mod',
+            check: false,
+        },
+        {
+            name: 'Zastraszanie',
+            attribute: '#cha-mod',
+            check: false,
+        },
+        {
+            name: 'Zwinne dłonie',
+            attribute: '#dex-mod',
+            check: false,
+        }
+    ]
 
+    // tab z umiejętnościami
+
+
+
+    const skillsTab = () => {
+        const skillsContainer = $('<div>', {class: 'skill-container'});
+        $('body').append(skillsContainer);
+        const closeSkillsContainerButton = $('<div>', {class: 'close-secondary-attributes'});
+        skillsContainer.append(closeSkillsContainerButton);
+        const closeSkillsContainerIcon = $('<i>', {class: 'fas fa-times fa-2x'});
+        closeSkillsContainerButton.append( closeSkillsContainerIcon);
+
+        closeSkillsContainerButton.on('click', () => {
+            skillsContainer.remove();
+        })
+
+        const skills = () => {
+            const skillsList = $('<ul>', {id: 'skills-list'})
+            skillsContainer.append(skillsList);
+            skillList.forEach(function (item,index) {
+                const containerDiv = $('<div>', {class: 'skill-list-item-container'})
+                skillsList.append(containerDiv)
+                const random = $('<li>', {class: 'skills-list-item'});
+                let modifier = +$(item.attribute).text()
+                if (item.check === true) {
+                    random.text(item.name+": " +(modifier + proficiency))
+                } else {
+                    random.text(item.name+": "+modifier)
+                }
+
+                containerDiv.append(random)
+                const testButton = $('<button>', {class: 'skill-test-button',});
+                testButton.text('Testuj!');
+                testButton.on('click', () => roll20(modifier));
+                containerDiv.append(testButton)
+
+
+    })
+    }
+        skills();
+
+    }
+
+
+
+
+     $('#skills').on('click', skillsTab);
     })

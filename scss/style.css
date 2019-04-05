@@ -1,67 +1,67 @@
-/* line 1, scss/style.scss */
+/* line 1, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-size: 16px; }
 
-/* line 8, scss/style.scss */
+/* line 8, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 body {
   position: relative; }
 
-/* line 12, scss/style.scss */
+/* line 12, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .page {
   display: flex;
   justify-content: space-around; }
 
-/* line 18, scss/style.scss */
+/* line 18, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .stat-button {
   padding: 0 3vw;
   border-radius: 10px;
   border: 1px solid black; }
 
-/* line 23, scss/style.scss */
+/* line 23, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .stat-buttons-container {
   display: flex;
   justify-content: space-evenly;
   flex-flow: row-reverse;
   margin: 2vh 0; }
 
-/* line 30, scss/style.scss */
+/* line 30, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .race-container, .subrace-container, #class-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column; }
 
-/* line 39, scss/style.scss */
+/* line 39, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .race-buttons-container, .subrace-button-container, #class-buttons-container {
   display: flex;
   width: 80%; }
 
-/* line 44, scss/style.scss */
+/* line 44, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .fas {
   padding-top: 1rem;
   padding-left: 1rem;
   color: lightgray; }
 
-/* line 50, scss/style.scss */
+/* line 50, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .race-button, .subrace-button, .class-button {
   width: 50%;
   padding: 10px;
   margin: 10px 0 0 0;
   flex-grow: 3; }
 
-/* line 57, scss/style.scss */
+/* line 57, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .back-button {
   position: absolute;
   padding: 0;
   top: 1vw;
   right: 1vw; }
 
-/* line 63, scss/style.scss */
+/* line 63, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .race-info, .class-info {
   position: absolute;
   top: 50vh;
@@ -75,55 +75,55 @@ body {
   max-height: 0;
   transition: 1s;
   overflow: hidden; }
-  /* line 79, scss/style.scss */
+  /* line 79, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
   .race-info.visible, .class-info.visible {
     top: 30%;
     max-height: 90vh; }
 
-/* line 98, scss/style.scss */
+/* line 98, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .race-arrow {
   width: 25%; }
 
-/* line 101, scss/style.scss */
+/* line 101, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .stats {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center; }
 
-/* line 108, scss/style.scss */
+/* line 108, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .stat-container {
   margin: 0 2.5vw 10px 2.5vw;
   text-align: center;
   border: 1px solid black;
   width: 45vw;
   padding: 10px 0; }
-  /* line 114, scss/style.scss */
+  /* line 114, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
   .stat-container:first-child {
     margin-top: 125px; }
-  /* line 117, scss/style.scss */
+  /* line 117, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
   .stat-container:nth-child(2) {
     margin-top: 125px; }
-  /* line 120, scss/style.scss */
+  /* line 120, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
   .stat-container .stat-button {
     padding: 0 20px; }
 
-/* line 125, scss/style.scss */
+/* line 125, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .tooltip {
   border: 1px solid black;
   background-color: white;
   position: absolute;
   z-index: 2; }
 
-/* line 132, scss/style.scss */
+/* line 132, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .main-stat {
   font-size: 1.7rem; }
 
-/* line 137, scss/style.scss */
+/* line 137, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .mod-stat {
   font-size: 1.2rem; }
 
-/* line 141, scss/style.scss */
+/* line 141, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 #points-pool-container {
   width: 100vw;
   height: 80px;
@@ -136,28 +136,30 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: white; }
-  /* line 154, scss/style.scss */
+  /* line 154, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
   #points-pool-container #points-pool {
     font-size: 2rem; }
-  /* line 157, scss/style.scss */
+  /* line 157, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
   #points-pool-container .back-button {
     font-size: 2rem; }
 
-/* line 162, scss/style.scss */
+/* line 162, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 #secondary-attributes-container {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: white;
   top: 0;
   display: flex; }
-  /* line 169, scss/style.scss */
+  /* line 169, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
   #secondary-attributes-container .secondary-attributes-half {
     border: 1px solid black;
     width: 50vw;
     display: flex;
-    flex-direction: column; }
-    /* line 174, scss/style.scss */
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; }
+    /* line 176, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
     #secondary-attributes-container .secondary-attributes-half .secondary-attributes-box {
       display: flex;
       flex-direction: column;
@@ -165,19 +167,18 @@ body {
       border: 1px solid black;
       width: 40vw;
       height: 30vw;
-      margin: 10vh 5vw;
       text-align: center; }
-      /* line 183, scss/style.scss */
+      /* line 185, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
       #secondary-attributes-container .secondary-attributes-half .secondary-attributes-box h1 {
         margin-top: 2vh;
         font-size: 2rem; }
 
-/* line 192, scss/style.scss */
+/* line 194, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .close-secondary-attributes {
   position: absolute;
   right: 5vw; }
 
-/* line 197, scss/style.scss */
+/* line 199, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 #class-container {
   position: fixed;
   top: 0;
@@ -185,11 +186,67 @@ body {
   width: 100vw;
   height: 100vh; }
 
-/* line 205, scss/style.scss */
+/* line 207, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+.skill-container {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  width: 100vw;
+  min-height: 100vh; }
+  /* line 213, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+  .skill-container ul {
+    list-style-type: none; }
+  /* line 216, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+  .skill-container .skill-list-item-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vw 0; }
+    /* line 220, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+    .skill-container .skill-list-item-container:first-child {
+      margin-top: 10vh; }
+    /* line 223, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+    .skill-container .skill-list-item-container .skills-list-item {
+      margin-left: 20vw; }
+    /* line 227, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+    .skill-container .skill-list-item-container .skill-test-button {
+      margin-right: 15vw;
+      font-size: 0.8rem;
+      padding: 0 3vw; }
+
+/* line 235, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+.roll-pop-container {
+  position: fixed;
+  top: 10vh;
+  left: 25vw;
+  width: 50vw;
+  height: 14vh;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center; }
+  /* line 244, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+  .roll-pop-container h1 {
+    font-size: 2rem; }
+  /* line 247, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+  .roll-pop-container h2 {
+    font-size: 1.5rem;
+    margin-top: 2vh; }
+  /* line 251, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+  .roll-pop-container h3 {
+    margin-top: 2vh;
+    font-size: 1rem; }
+  /* line 255, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+  .roll-pop-container button {
+    margin: 1vh 0 2vh 0; }
+
+/* line 260, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
+.crit {
+  background-color: red; }
+
+/* line 264, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .hidden {
   display: none; }
 
-/* line 209, scss/style.scss */
+/* line 268, E:/Szymon.Szweda/PRACE/prywatne/projekt/karta_postaci/scss/style.scss */
 .visible {
   display: block; }
 

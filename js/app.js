@@ -132,6 +132,7 @@ $(document).ready(function () {
         }
 
         // generowanie guzików do półelfiego wyboru statystyk
+
         function halfElfStats(array1, array2, parent) {
             for (i = 0; i < array1.length; i++) {
                 var button = $('<div class="subrace-button-container"><button class="subrace-button" id=' + array1[i] + '>' + array2[i] + '</button></div>');
@@ -559,62 +560,74 @@ $(document).ready(function () {
         {
             name: "barbarian",
             hitDie: 12,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Atletyka', 'Opieka nad zwierzętami', 'Percepcja', 'Przyroda', 'Sztuka przetrwania', 'Zastraszanie']
         },
         {
             name: "bard",
             hitDie: 8,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Akrobatyka', 'Atletyka', 'Historia', 'Intuicja', 'Medycyna', 'Opieka nad zwierzętami', 'Oszustwo', 'Percepcja', 'Perswazja', 'Przyroda', 'Religia', 'Skradanie się', 'Sztuka przetrwania', 'Śledztwo', 'Wiedza tajemna', 'Występy', 'Zastraszanie', 'Zwinne dłonie']
         },
         {
             name: "cleric",
             hitDie: 8,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Historia', 'Intuicja', 'Medycyna', 'Perswazja', 'Religia']
         },
         {
             name: "druid",
             hitDie: 8,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Intuicja', 'Medycyna', 'Opieka nad zwierzętami', 'Percepcja', 'Przyroda', 'Religia', 'Sztuka przetrwania', 'Wiedza tajemna']
         },
         {
             name: "fighter",
             hitDie: 10,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Akrobatyka', 'Atletyka', 'Historia', 'Intuicja', 'Opieka nad zwierzętami', 'Percepcja', 'Sztuka przetrwania', 'Zastraszanie']
         },
         {
             name: "monk",
             hitDie: 8,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Akrobatyka', 'Atletyka', 'Historia', 'Intuicja', 'Religia', 'Skradanie się']
         },
         {
             name: "paladin",
             hitDie: 10,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Atletyka', 'Intuicja', 'Medycyna', 'Perswazja', 'Religia', 'Zastraszanie']
         },
         {
             name: "ranger",
             hitDie: 8,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Atletyka', 'Intuicja', 'Opieka nad zwierzętami', 'Percepcja', 'Przyroda', 'Skradanie się', 'Sztuka przetrwania', 'Śledztwo']
         },
         {
             name: "rogue",
             hitDie: 8,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Akrobatyka', 'Atletyka', 'Intuicja', 'Oszustwo', 'Percepcja', 'Perswazja', 'Skradanie się', 'Śledztwo', 'Występy', 'Zastraszanie', 'Zwinne dłonie']
         },
         {
             name: "sorcerer",
             hitDie: 6,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Intuicja', 'Oszustwo', 'Perswazja', 'Religia', 'Wiedza tajemna', 'Zastraszanie']
         },
         {
             name: "warlock",
             hitDie: 8,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Historia', 'Oszustwo', 'Przyroda', 'Religia', 'Śledztwo', 'Wiedza tajemna', 'Zastraszanie']
         },
         {
             name: "wizard",
             hitDie: 6,
-            proficiency: 2
+            proficiency: 2,
+            skills: ['Historia', 'Intuicja', 'Medycyna', 'Religia', 'Śledztwo', 'Wiedza tajemna']
         }
     ]
 
@@ -684,12 +697,47 @@ $(document).ready(function () {
         classInfo('warlock', '<ul class="class-info" id="warlock-info"><li>Bohater używający magii płynącej z paktu z nieludzką istotą</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Lekkie zbroje, bronie proste</li></ul>');
         classInfo('wizard', '<ul class="class-info" id="wizard-info"><li>Uczony, który za pomocą wyuczonej magii nagina strukturę rzeczywistości</li><li>Kostka życia: d6</li><li>Podstawowa statystyka: Inteligencja</li><li>PROF do rzutów obronnych: Inteligencja i Mądrość</li><li>Prof do broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
 
+
+        // funkcja tworząca przyciski umiejętności i okreslające co się dziej po kliknieciu
+
+        function skillsProficiency(array,points) {
+
+            const skillsCanvas = $('<div>', {id: "skills-canvas"});
+            $('body').append(skillsCanvas);
+            var backButton = $('<i class="fas fa-caret-square-left fa-2x back-button"></i>');
+            skillsCanvas.prepend(backButton);
+            backButton.on('click', function () {
+                location.reload();
+            })
+            let skillPoints = points;
+            const skillPointsContainer = $('<div>', {class: 'skill-points-cointainer'});
+            skillsCanvas.append(skillPointsContainer);
+            skillPointsContainer.html(`<h1>Wybierz ${skillPoints} umiejętności</h1>`);
+            array.forEach((item) => {
+                const skillButton = $('<button>', {class: 'choose-skills-buttons'})
+                skillPointsContainer.append(skillButton);
+                skillButton.text(item);
+                skillButton.on('click', (event) => {
+                    let clickedSkill = item;
+                    skillList.forEach( item => {
+                        if (item.name == clickedSkill) {
+                            item.check = true;
+                        }
+                    })
+                    event.target.remove();
+                    skillPoints = skillPoints - 1;
+                    if (skillPoints === 0) {
+                        skillsCanvas.remove();
+                    }
+                })
+            })
+        }
+
         // funkcja ustawiająca klasę
 
-        function clickClassButton (klasa) {
+        function clickClassButton (klasa,callback,skillIndex,skillPoints) {
             $('#'+klasa).on('click', () => {
                 chosenClass = klasa;
-
                 basicClasses.forEach(function(item) {
                     if (item.name === klasa) {
                         const hitPointCalc = item.hitDie/2 + 1;
@@ -699,23 +747,23 @@ $(document).ready(function () {
                     }
                 })
 
-
+                callback(basicClasses[skillIndex].skills,skillPoints);
                 $('#class-container').remove();
             })
         }
 
-        clickClassButton('barbarian');
-        clickClassButton('bard');
-        clickClassButton('cleric');
-        clickClassButton('druid');
-        clickClassButton('fighter');
-        clickClassButton('monk');
-        clickClassButton('paladin');
-        clickClassButton('ranger');
-        clickClassButton('rogue');
-        clickClassButton('sorcerer');
-        clickClassButton('warlock');
-        clickClassButton('wizard');
+        clickClassButton('barbarian',skillsProficiency,0,2);
+        clickClassButton('bard',skillsProficiency,1,3);
+        clickClassButton('cleric',skillsProficiency,2,2);
+        clickClassButton('druid',skillsProficiency,3,2);
+        clickClassButton('fighter',skillsProficiency,4,2);
+        clickClassButton('monk',skillsProficiency,5,2);
+        clickClassButton('paladin',skillsProficiency,6,2);
+        clickClassButton('ranger',skillsProficiency,7,3);
+        clickClassButton('rogue',skillsProficiency,8,4);
+        clickClassButton('sorcerer',skillsProficiency,9,2);
+        clickClassButton('warlock',skillsProficiency,10,2);
+        clickClassButton('wizard',skillsProficiency,11,2);
 
 
         // button powracający
@@ -834,7 +882,7 @@ $(document).ready(function () {
         closeSkillsContainerButton.append( closeSkillsContainerIcon);
 
         closeSkillsContainerButton.on('click', () => {
-            skillsContainer.remove();
+            skillsContainerk.remove();
         })
 
         const skills = () => {

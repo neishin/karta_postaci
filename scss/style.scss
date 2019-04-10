@@ -27,16 +27,21 @@ body {
     margin: 2vh 0;
 }
 
-.race-container, .subrace-container, #class-container {
+.race-container, .subrace-container, #class-container, .skill-points-cointainer {
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.race-buttons-container, .subrace-button-container, #class-buttons-container {
+.skill-points-cointainer{
+    button:last-child {
+        margin-bottom: 3vh;
+    }
+}
+.race-buttons-container, .subrace-button-container, #class-buttons-container, {
     display: flex;
     width: 80%;
 }
@@ -47,11 +52,15 @@ body {
     color: lightgray;
 }
 
-.race-button, .subrace-button, .class-button {
+.race-button, .subrace-button, .class-button, .choose-skills-buttons {
     width: 50%;
     padding: 10px;
     margin: 10px 0 0 0;
     flex-grow: 3;
+}
+
+.choose-skills-buttons {
+    flex-grow: 0;
 }
 
 .back-button {
@@ -159,10 +168,11 @@ body {
 }
 }
 
-#secondary-attributes-container {
+#secondary-attributes-container, #skills-canvas {
     position: fixed;
     width: 100vw;
-    min-height: 100vh;
+    height: auto;
+    overflow: scroll;
     background: white;
     top: 0;
     display: flex;
@@ -196,7 +206,7 @@ body {
     right: 5vw;
 }
 
-#class-container {
+#class-container  {
     position: fixed;
     top: 0;
     background-color: white;
@@ -209,7 +219,7 @@ body {
     top: 0;
     background-color: white;
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     ul {
         list-style-type: none;
     }

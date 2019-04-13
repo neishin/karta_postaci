@@ -41,6 +41,9 @@ $(document).ready(function () {
     $('#roll20').on('click', roll20)
 
     // wybór rasy
+
+    let chosenRase = '';
+
     function chooseRase() {
         $('.stats').addClass('hidden');
         $('#points-pool-container').css('display', 'none');
@@ -105,15 +108,15 @@ $(document).ready(function () {
             })
         }
 
-        raceInfo('dwarf', '<ul class="race-info" id="dwarf-info"><li>Twoja Wytrzymałość jest większa o 2</li><li>Twój rozmiar jest Średni</li><li>Twoja Szybkość to 25 metrów</li><li>Widzisz w ciemności na 60 metrów</li><li>Masz 2 kości na rzut obronny przeciw truciznom. Masz też odporność na trucizny</li><li>Potrafisz używać: topora bojowego, topora, lekkiego młota i młota bojowego</li><li>Umiesz używać (do wyboru): narzędzi kowalskich, środków browarniczych lub narzędzi murarskich</li><li>Kiedy rzucacz Inteligencje(Historię) dotycząco prac w kamieniu to masz PROFICIENCY w Historii i dodajesz podwójne PROF do tego rzutu</li><li>Umiesz mówić i pisać we wspólnym i krasnoludzkim.</li><li>Możesz być Kransoludem Wzgórzowym albo Górskim</li></ul>');
-        raceInfo('elf', '<ul class="race-info" id="elf-info"><li>Twoja Zręczność jest większa o 2</li><li>Twój rozmiar jest średni</li><li>Twoja Szybkość to 30 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz PROF w umiejętności Percepcja</li><li>Masz 2 kości na rzut obronny przeciw zauroczeniu. Magia nie może cie uśpić</li><li>Nie śpisz, medytujesz 4 godziny dziennie. Liczy się to jak Długi odpoczynek</li><li>Mówisz i piszesz we wspólnym i elfickim</li><li>Możesz być elfem wysokim, leśnym lub mrocznym</li></ul>');
-        raceInfo('halfling', '<ul class="race-info" id="halfling-info"><li>Twoja Zręczność jest większa o 2</li><li>Twój rozmiar jest mały</li><li>Twoja Szybkość to 25 metrów</li><li>Możesz przerzucić wynik 1 w rzutach na atak, test umiejętności, rzut obronny</li><li>Masz przewagę w rzutach na strach</li><li>Możesz poruszać się przez pole z wrogiem większym od ciebie</li><li>Mówisz i piszesz we wspólnym i halflińskim</li><li>Możesz być halflingiem lekkostopym lub krzepkim </li></ul>')
-        raceInfo('human', '<ul class="race-info" id="human-info"><li>Wszystkie twoje ceny są większe o 1</li><li>Twój rozmiar jest średni</li><li>Twoja Szybkość to 30 metrów</li><li>Mówisz i piszesz we wspólnym i jednym dowolnym języku</li></ul>')
-        raceInfo('dragonborn', '<ul class="race-info" id="dragonborn-info"><li>Twoja Siła jest większa o 2, a Charyzma o 1</li><li>Twój rozmiar jest średni</li><li>Twoja Szybkość to 30 metrów</li><li>Wybiesz typ smoka, by dostać jego atak zionięciem</li><li>Masz odporność na typ obrażeń zgodny z twoim typem zionięcia</li><li>Mówisz i piszesz we wspólnym i smocznym</li></ul>')
-        raceInfo('gnome', '<ul class="race-info" id="gnome-info"><li>Twoja Inteligencja jest większa o 2</li><li>Twój rozmiar jest mały</li><li>Twoja Szybkość to 25 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz przewagę na rzuty obronne na magię bazujące na Inteligencji, Mądrości i Charyźmie</li><li>Mówisz i piszesz we wspólnym i gnomim</li><li>Możesz być gnomem leśnym lub kamiennym</li></ul>')
-        raceInfo('tiefling', '<ul class="race-info" id="tiefling-info"><li>Twoja Inteligencja jest większa o 1, a Charyzma o 2</li><li>Twój rozmiar jest średni</li><li>Twoja Szybkość to 30 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz odporność na ogień</li><li>Znasz sztuczkę Taumaturgia</li><li>Mówisz i piszesz we wspólnym i infernalnym</li></ul>')
-        raceInfo('halfelf', '<ul class="race-info" id="halfelf-info"><li>Twoha Charyzma zwiększa się o 2, a dwie inne cechy o 1</li><li>Twój rozmiar jest średni</li><li>Twoja szybkość to 30 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz przewagę na rzut obronny przeciw zauroczeniu. Magia nie może cie uśpić</li><li>Masz PROF w dwóch wybranych umiejętnościach</li><li>Mówisz i piszesz we wspólnym, elfickim i jeszcze jednym wybranym języku</li></ul>')
-        raceInfo('halforc', '<ul class="race-info" id="halforc-info"><li>Twoja siła zwiększa się o 2, a Wytrzymałość o 1</li><li>Twój rozmiar jest średni</li><li>Twoja szybkość to 30 metrów</li><li>Widzisz w ciemnościach na 60 metrów</li><li>Masz PROF w umiejętności Zastraszanie</li><li>Raz na długi odpoczynek kiedy spadniesz do 0 punktów życia (ale nie zostaniesz zabity) możesz wrócić na 1 punkt życia</li><li>Przy krytycznym sukcesie na atak rzucasz dodatkową jedną kością obrażeń broni i dodajesz ją do sumy obrażeń</li><li>Mówisz i piszesz we wspólnym i orczym</li></ul>')
+        raceInfo('dwarf', '<ul class="race-info" id="dwarf-info"><li>Wytrzymałość większa o 2</li><li>Rozmiar: Średni</li><li>Szybkość: 25 metrów</li><li>Widzienie w ciemności: 60 metrów</li><li>Ułatwienie na rzut obronny przeciw truciznom. Odporność na trucizny</li><li>Biegłości: topór bojowy, siekiera, lekki młot i młot bojowy</li><li>Umiesz używać (do wyboru): narzędzi kowalskich, środków browarniczych lub narzędzi murarskich</li><li>Kiedy rzucacz Inteligencje(Historię) dotycząco prac w kamieniu to masz PROFICIENCY w Historii i dodajesz podwójne PROF do tego rzutu</li><li>Umiesz mówić i pisać we wspólnym i krasnoludzkim.</li><li>Możesz być Kransoludem Wzgórzowym albo Górskim</li></ul>');
+        raceInfo('elf', '<ul class="race-info" id="elf-info"><li>Zręczność większa o 2</li><li>Rozmiar: średni</li><li>Szybkość: 30 metrów</li><li>Widzenie w ciemnościach: 60 metrów</li><li>Biegłość w Percepcji</li><li>Ułatwienie na rzut obronny przeciw zauroczeniu. Magia nie może cie uśpić</li><li>Nie śpisz, medytujesz 4 godziny dziennie. Liczy się to jak Długi odpoczynek</li><li>Mówisz i piszesz we wspólnym i elfickim</li><li>Możesz być elfem wysokim, leśnym lub mrocznym</li></ul>');
+        raceInfo('halfling', '<ul class="race-info" id="halfling-info"><li>Zręczność większa o 2</li><li>Rozmiar: mały</li><li>Szybkość: 25 metrów</li><li>Możesz przerzucić wynik 1 w rzutach na atak, testu umiejętności, rzut obronny</li><li>Ułatwienie w rzutach na strach</li><li>Możesz poruszać się przez pole z wrogiem większym od ciebie</li><li>Mówisz i piszesz we wspólnym i halflińskim</li><li>Możesz być halflingiem lekkostopym lub krzepkim </li></ul>')
+        raceInfo('human', '<ul class="race-info" id="human-info"><li>Wszystkie cechy są większe o 1</li><li>Rozmiar: średni</li><li>Szybkość: 30 metrów</li><li>Mówisz i piszesz we wspólnym i jednym dowolnym języku</li></ul>')
+        raceInfo('dragonborn', '<ul class="race-info" id="dragonborn-info"><li>Siła większa o 2, Charyzma o 1</li><li>Rozmiar: średni</li><li>Szybkość: 30 metrów</li><li>Wybiesz typ smoka, by dostać jego atak zionięciem</li><li>Odporność na typ obrażeń zgodny z twoim typem zionięcia</li><li>Mówisz i piszesz we wspólnym i smocznym</li></ul>')
+        raceInfo('gnome', '<ul class="race-info" id="gnome-info"><li>Inteligencja większa o 2</li><li>Rozmiar: mały</li><li>Szybkość: 25 metrów</li><li>Widzenie w ciemnościach: 60 metrów</li><li>Ułatwienie na rzuty obronne na magię bazujące na Inteligencji, Mądrości i Charyźmie</li><li>Mówisz i piszesz we wspólnym i gnomim</li><li>Możesz być gnomem leśnym lub kamiennym</li></ul>')
+        raceInfo('tiefling', '<ul class="race-info" id="tiefling-info"><li>Inteligencja większa o 1, a Charyzma o 2</li><li>Rozmiar: średni</li><li>Szybkość: 30 metrów</li><li>Widzenie w ciemnościach: 60 metrów</li><li>Odporność na ogień</li><li>Znasz sztuczkę Taumaturgia</li><li>Mówisz i piszesz we wspólnym i infernalnym</li></ul>')
+        raceInfo('halfelf', '<ul class="race-info" id="halfelf-info"><li>Charyzma większa o 2, a dwie inne cechy o 1</li><li>Rozmiar: średni</li><li>Szybkość: 30 metrów</li><li>Widzenie w ciemnościach: 60 metrów</li><li>Ułatwienie na rzut obronny przeciw zauroczeniu. Magia nie może cie uśpić</li><li>Biegłość w dwóch wybranych umiejętnościach</li><li>Mówisz i piszesz we wspólnym, elfickim i jeszcze jednym wybranym języku</li></ul>')
+        raceInfo('halforc', '<ul class="race-info" id="halforc-info"><li>Siła większa  o 2, a Wytrzymałość o 1</li><li>Rozmiar: średni</li><li>Szybkość: 30 metrów</li><li>Widzenie w ciemnościach: 60 metrów</li><li>Biegłość w Zastraszaniu</li><li>Raz na długi odpoczynek kiedy spadniesz do 0 punktów życia (ale nie zostaniesz zabity) możesz wrócić na 1 punkt życia</li><li>Przy krytycznym sukcesie na atak rzucasz dodatkową jedną kością obrażeń broni i dodajesz ją do sumy obrażeń</li><li>Mówisz i piszesz we wspólnym i orczym</li></ul>')
 
 
 
@@ -170,6 +173,7 @@ $(document).ready(function () {
 
         // po kliknięciu rasy
         $('#dwarf').on('click', function () {
+            chosenRase = 'dwarf';
             speed = 25;
             $('#con').text('10');
             $('#con-mod').text('0');
@@ -197,6 +201,7 @@ $(document).ready(function () {
             })
         });
         $('#elf').on('click', function () {
+            chosenRase = 'elf';
             speed = 30;
             $('#dex').text('10');
             $('#dex-mod').text('0');
@@ -205,7 +210,7 @@ $(document).ready(function () {
             $('.race-container').addClass('hidden');
             subraceButtons(['highElf', 'woodElf', 'darkElf'], ['Elf wysoki', 'Elf leśny', 'Elf mroczny'], subrace);
             subraceInfo('highElf', '<ul class="race-info" id="highElf-info"><li>Twoja Inteligencja jest większa o 1</li><li>Umiesz używać długich i krótkich mieczy oraz krótkiego i długiego łuku</li><li>Znasz jedną sztuczkę rzucaną na Inteligencji</li><li>Znasz jeden dodatkowy język</li></ul>')
-            subraceInfo('woodElf', '<ul class="race-info" id="woodElf-info"><li>Twoja Mądrość jest większa o 1</li><li>Umiesz używać długich i krótkich mieczy oraz krótkiego i długiego łuku</li>Twoja Szybkość to 35 metrów</li><li>Łatwiej ci się ukrywać</li></ul>')
+            subraceInfo('woodElf', '<ul class="race-info" id="woodElf-info"><li>Twoja Mądrość jest większa o 1</li><li>Umiesz używać długich i krótkich mieczy oraz krótkiego i długiego łuku</li>Szybkość: 35 metrów</li><li>Łatwiej ci się ukrywać</li></ul>')
             subraceInfo('darkElf', '<ul class="race-info" id="darkElf-info"><li>Twoja Charyzma jest większa o 1</li><li>Lepsze widzenie w ciemności</li><li>Jesteś wrażliwy na światło - DISADV na testy Mądrości(Percepcji) polegającej na wzroku podczas dnia</li><li>Umiesz rzucać sztuczkę Tańczące światła</li><li>Umiesz używać rapierów, krótkich mieczy oraz ręcznej kuszy</li></ul>')
             $('#highElf').on('click', function () {
                 $('#int').text('9');
@@ -228,6 +233,7 @@ $(document).ready(function () {
         });
 
         $('#halfling').on('click', function () {
+            chosenRase = 'halfling';
             speed = 25;
             $('#dex').text('10');
             $('#dex-mod').text('0');
@@ -251,11 +257,13 @@ $(document).ready(function () {
             })
         });
         $('#human').on('click', function () {
+            chosenRase = 'human';
             speed = 30;
             $('.main-stat').text('9');
             clickAccept();
         });
         $('#dragonborn').on('click', function () {
+            chosenRase = 'dragonborn';
             speed = 30;
             $('#str').text('10');
             $('#str-mod').text('0');
@@ -263,6 +271,7 @@ $(document).ready(function () {
             clickAccept();
         });
         $('#gnome').on('click', function () {
+            chosenRase = 'gnome';
             speed = 25;
             $('#int').text('10');
             $('#int-mod').text('0');
@@ -286,12 +295,14 @@ $(document).ready(function () {
             })
         });
         $('#tiefling').on('click', function () {
+            chosenRase = 'tiefling';
             $('#int').text('9');
             $('#cha').text('10');
             $('#cha-mod').text('0');
             clickAccept();
         });
         $('#halfelf').on('click', function () {
+            chosenRase = 'halfelf';
             speed = 30;
             $('#cha').text('10');
             $('#cha-mod').text('0');
@@ -327,6 +338,8 @@ $(document).ready(function () {
 
         });
         $('#halforc').on('click', function () {
+            chosenRase = 'halforc';
+            skillList[16].check = true;
             speed = 30;
             $('#con').text('9');
             $('#str').text('10');
@@ -345,7 +358,7 @@ $(document).ready(function () {
         var statNumber = parseInt(currentStat);
         var poolNumber = parseInt(currentPool);
         if (statNumber == 8) {
-            alert("Cecha nie może być niższa niż 8")
+            alert("Cecha nie może być niższa niż 8")
         } else if (statNumber > 8 && statNumber < 14) {
             $(stat).text(statNumber -= 1);
             $('#points-pool').text(poolNumber += 1);
@@ -428,9 +441,10 @@ $(document).ready(function () {
             $('.stat-container:first-child').css('margin-top', '10vh');
             $('.stat-container:nth-child(2)').css('margin-top', '10vh');
             $('.race-container').remove();
-            $('#buttons').removeClass('hidden');
+            $('#buttons').removeClass('hidden').css('display', 'flex');
 
         })
+
     // minus button do stata
 
     const removeStat = (button,stat,modifier) => {
@@ -542,7 +556,7 @@ $(document).ready(function () {
          let proficiencyBox = $('<div>', {class: 'secondary-attributes-box'});
         let proficiencyHeader = $('<h2>');
         let proficiencyValue = $('<h1>');
-        proficiencyHeader.text('PROF');
+        proficiencyHeader.text('Biegłość');
         proficiencyValue.text(proficiency);
         proficiencyBox.append(proficiencyHeader);
         proficiencyBox.append(proficiencyValue);
@@ -554,7 +568,7 @@ $(document).ready(function () {
 
     // wybór klasy
 
-    let chosenClass = 'fighter';
+    let chosenClass = '';
 
     const basicClasses = [
         {
@@ -684,18 +698,18 @@ $(document).ready(function () {
             })
         }
 
-        classInfo('barbarian', '<ul class="class-info" id="barbarian-info"><li>Poteżni wojownicy o dzikich korzeniach, którzy w walce wpadają w bojowy szał</li><li>Kostka życia: d12</li><li>Podstawowa statystyka: Siła</li><li>PROF do rzutów obronnych: Siła i Wytrzymałość</li><li>Prof do broni i zbroi: Zbroje lekkie i średnie, tarcze, bronie proste i ręczne</li></ul>');
-        classInfo('bard', '<ul class="class-info" id="bard-info"><li>Inspirujący magicy, w których muzyce pobrzmiewają echa dźwięków kreacji</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Zręczność i Charyzma</li><li>Prof do broni i zbroi: Zbroje lekkie, bronie proste, ręczne kusze, długie i krótkie miecze, rapiery</li></ul>');
-        classInfo('cleric', '<ul class="class-info" id="cleric-info"><li>Kapłański czempion, który dzierży boską magię by służyć sile wyższej</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Mądrość</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Zbroje lekkie i średnie, tarcze, bronie proste</li></ul>');
-        classInfo('druid', '<ul class="class-info" id="druid-info"><li>Kapłan Starej Wiary władający siłami natury i przyjmujący kształt zwierząt</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Mądrość</li><li>PROF do rzutów obronnych: Mądrość i Inteligencja</li><li>Prof do broni i zbroi: Zbroje lekkie i średnie (niemetalowe), tarcze (niemetalowe), pałki, sztylety, kije, sejmitary, sierpy, proce, dzidy</li></ul>');
-        classInfo('fighter', '<ul class="class-info" id="fighter-info"><li>Mistrz walki, w rękach którego każdy przedmiot jest zabójczą bronią</li><li>Kostka życia: d10</li><li>Podstawowa statystyka: Siła lub Zręczność</li><li>PROF do rzutów obronnych: Siła i Wytrzymałość</li><li>Prof do broni i zbroi: Wszystkie rodzaje zbroi, tarcze, bronie proste i ręczne</li></ul>');
-        classInfo('monk', '<ul class="class-info" id="monk-info"><li>Mistrz sztuk walki, który dąży do perfekcji ciała i ducha</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Zręczność i Mądrość</li><li>PROF do rzutów obronnych: Siła i Zręczność</li><li>Prof do broni i zbroi: Bronie proste i krótkie miecze</li></ul>');
-        classInfo('paladin', '<ul class="class-info" id="paladin-info"><li>Święty wojownik podczas boskiej misji</li><li>Kostka życia: d10</li><li>Podstawowa statystyka: Siła i Charyzma</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Wszystkie rodzaje zbroi, tarcze, bronie proste i ręczne</li></ul>');
-        classInfo('ranger', '<ul class="class-info" id="ranger-info"><li>Wojownik używając broni i magii by walczyć z potworami na granicy cywilizacji</li><li>Kostka życia: d10</li><li>Podstawowa statystyka: Zręczność i Mądrość</li><li>PROF do rzutów obronnych: Siła i Zręczność</li><li>Prof do broni i zbroi:Zbroje lekkie i średnie, tarcze, bronie proste i ręczne</li></ul>');
-        classInfo('rogue', '<ul class="class-info" id="rogue-info"><li>Łotrzyk używający cieni i oszustw by pokonać przeszkody i wrogów</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Zręczność</li><li>PROF do rzutów obronnych: Zręczność i Inteligencja</li><li>Prof do broni i zbroi: Lekkie zbroje, proste bronie, ręczne kusze, długie i krótkie miecze, rapiery</li></ul>');
-        classInfo('sorcerer', '<ul class="class-info" id="sorcerer-info"><li>Bohater używający magii płynącej z darów lub lini krwi</li><li>Kostka życia: d6</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Wytrzymałość i Charyzma</li><li>Prof do broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
-        classInfo('warlock', '<ul class="class-info" id="warlock-info"><li>Bohater używający magii płynącej z paktu z nieludzką istotą</li><li>Kostka życia: d8</li><li>Podstawowa statystyka: Charyzma</li><li>PROF do rzutów obronnych: Mądrość i Charyzma</li><li>Prof do broni i zbroi: Lekkie zbroje, bronie proste</li></ul>');
-        classInfo('wizard', '<ul class="class-info" id="wizard-info"><li>Uczony, który za pomocą wyuczonej magii nagina strukturę rzeczywistości</li><li>Kostka życia: d6</li><li>Podstawowa statystyka: Inteligencja</li><li>PROF do rzutów obronnych: Inteligencja i Mądrość</li><li>Prof do broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
+        classInfo('barbarian', '<ul class="class-info" id="barbarian-info"><li>Poteżni wojownicy o dzikich korzeniach, którzy w walce wpadają w bojowy szał</li><li>Kostka życia: d12</li><li>Podstawowa cecha: Siła</li><li>Biegłość w rzutach obronnych: Siła i Wytrzymałość</li><li>Biegłość w broni i zbroi: Zbroje lekkie i średnie, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('bard', '<ul class="class-info" id="bard-info"><li>Inspirujący magicy, w których muzyce pobrzmiewają echa dźwięków kreacji</li><li>Kostka życia: d8</li><li>Podstawowa cecha: Charyzma</li><li>Biegłość w rzutach obronnych: Zręczność i Charyzma</li><li>Biegłość w broni i zbroi: Zbroje lekkie, bronie proste, ręczne kusze, długie i krótkie miecze, rapiery</li></ul>');
+        classInfo('cleric', '<ul class="class-info" id="cleric-info"><li>Kapłański czempion, który dzierży boską magię by służyć sile wyższej</li><li>Kostka życia: d8</li><li>Podstawowa cecha: Mądrość</li><li>Biegłość w rzutach obronnych: Mądrość i Charyzma</li><li>Biegłość w broni i zbroi: Zbroje lekkie i średnie, tarcze, bronie proste</li></ul>');
+        classInfo('druid', '<ul class="class-info" id="druid-info"><li>Kapłan Starej Wiary władający siłami natury i przyjmujący kształt zwierząt</li><li>Kostka życia: d8</li><li>Podstawowa cecha: Mądrość</li><li>Biegłość w rzutach obronnych: Mądrość i Inteligencja</li><li>Biegłość w broni i zbroi: Zbroje lekkie i średnie (niemetalowe), tarcze (niemetalowe), pałki, sztylety, kije, sejmitary, sierpy, proce, dzidy</li></ul>');
+        classInfo('fighter', '<ul class="class-info" id="fighter-info"><li>Mistrz walki, w rękach którego każdy przedmiot jest zabójczą bronią</li><li>Kostka życia: d10</li><li>Podstawowa cecha: Siła lub Zręczność</li><li>Biegłość w rzutach obronnych: Siła i Wytrzymałość</li><li>Biegłość w broni i zbroi: Wszystkie rodzaje zbroi, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('monk', '<ul class="class-info" id="monk-info"><li>Mistrz sztuk walki, który dąży do perfekcji ciała i ducha</li><li>Kostka życia: d8</li><li>Podstawowa cecha: Zręczność i Mądrość</li><li>Biegłość w rzutach obronnych: Siła i Zręczność</li><li>Biegłość w broni i zbroi: Bronie proste i krótkie miecze</li></ul>');
+        classInfo('paladin', '<ul class="class-info" id="paladin-info"><li>Święty wojownik podczas boskiej misji</li><li>Kostka życia: d10</li><li>Podstawowa cecha: Siła i Charyzma</li><li>Biegłość w rzutach obronnych: Mądrość i Charyzma</li><li>Biegłość w broni i zbroi: Wszystkie rodzaje zbroi, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('ranger', '<ul class="class-info" id="ranger-info"><li>Wojownik używając broni i magii by walczyć z potworami na granicy cywilizacji</li><li>Kostka życia: d10</li><li>Podstawowa cecha: Zręczność i Mądrość</li><li>Biegłość w rzutach obronnych: Siła i Zręczność</li><li>Biegłość w broni i zbroi:Zbroje lekkie i średnie, tarcze, bronie proste i ręczne</li></ul>');
+        classInfo('rogue', '<ul class="class-info" id="rogue-info"><li>Łotrzyk używający cieni i oszustw by pokonać przeszkody i wrogów</li><li>Kostka życia: d8</li><li>Podstawowa cecha: Zręczność</li><li>Biegłość w rzutach obronnych: Zręczność i Inteligencja</li><li>Biegłość w broni i zbroi: Lekkie zbroje, proste bronie, ręczne kusze, długie i krótkie miecze, rapiery</li></ul>');
+        classInfo('sorcerer', '<ul class="class-info" id="sorcerer-info"><li>Bohater używający magii płynącej z darów lub lini krwi</li><li>Kostka życia: d6</li><li>Podstawowa cecha: Charyzma</li><li>Biegłość w rzutach obronnych: Wytrzymałość i Charyzma</li><li>Biegłość w broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
+        classInfo('warlock', '<ul class="class-info" id="warlock-info"><li>Bohater używający magii płynącej z paktu z nieludzką istotą</li><li>Kostka życia: d8</li><li>Podstawowa cecha: Charyzma</li><li>Biegłość w rzutach obronnych: Mądrość i Charyzma</li><li>Biegłość w broni i zbroi: Lekkie zbroje, bronie proste</li></ul>');
+        classInfo('wizard', '<ul class="class-info" id="wizard-info"><li>Uczony, który za pomocą wyuczonej magii nagina strukturę rzeczywistości</li><li>Kostka życia: d6</li><li>Podstawowa cecha: Inteligencja</li><li>Biegłość w rzutach obronnych: Inteligencja i Mądrość</li><li>Biegłość w broni i zbroi: Sztylety, strzałki, proce, kije, lekkie kusze</li></ul>');
 
 
         // funkcja tworząca przyciski umiejętności i okreslające co się dziej po kliknieciu
@@ -708,8 +722,13 @@ $(document).ready(function () {
             skillsCanvas.prepend(backButton);
             backButton.on('click', function () {
                 location.reload();
-            })
+            });
             let skillPoints = points;
+            if (chosenRase == 'halfelf') {
+                skillPoints = points+2;
+            }
+            console.log(chosenRase, skillPoints)
+            
             const skillPointsContainer = $('<div>', {class: 'skill-points-cointainer'});
             skillsCanvas.append(skillPointsContainer);
             skillPointsContainer.html(`<h1>Wybierz ${skillPoints} umiejętności</h1>`);
@@ -717,7 +736,7 @@ $(document).ready(function () {
                 const skillButton = $('<button>', {class: 'choose-skills-buttons'})
                 skillPointsContainer.append(skillButton);
                 skillButton.text(item);
-                skillButton.on('click', (event) => {
+                skillButton.on('click', () => {
                     let clickedSkill = item;
                     skillList.forEach( item => {
                         if (item.name == clickedSkill) {
@@ -728,6 +747,7 @@ $(document).ready(function () {
                     skillPoints = skillPoints - 1;
                     if (skillPoints === 0) {
                         skillsCanvas.remove();
+                        console.log(skillList)
                     }
                 })
             })
@@ -882,7 +902,7 @@ $(document).ready(function () {
         closeSkillsContainerButton.append( closeSkillsContainerIcon);
 
         closeSkillsContainerButton.on('click', () => {
-            skillsContainerk.remove();
+            skillsContainer.remove();
         })
 
         const skills = () => {

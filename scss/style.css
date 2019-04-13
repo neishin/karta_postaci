@@ -1,75 +1,76 @@
-/* line 1, scss/style.scss */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 16px; }
+  font-size: 16px;
+}
 
-/* line 8, scss/style.scss */
 body {
-  position: relative; }
+  position: relative;
+}
 
-/* line 12, scss/style.scss */
 .page {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+}
 
-/* line 18, scss/style.scss */
 .stat-button {
   padding: 0 3vw;
   border-radius: 10px;
-  border: 1px solid black; }
+  border: 1px solid black;
+}
 
-/* line 23, scss/style.scss */
 .stat-buttons-container {
   display: flex;
   justify-content: space-evenly;
   flex-flow: row-reverse;
-  margin: 2vh 0; }
+  margin: 2vh 0;
+}
 
-/* line 30, scss/style.scss */
 .race-container, .subrace-container, #class-container, .skill-points-cointainer {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: column;
+}
 
-/* line 40, scss/style.scss */
 .skill-points-cointainer button:last-child {
-  margin-bottom: 3vh; }
+  margin-bottom: 3vh;
+}
 
-/* line 44, scss/style.scss */
 .race-buttons-container, .subrace-button-container, #class-buttons-container {
   display: flex;
-  width: 80%; }
+  width: 80%;
+}
 
-/* line 49, scss/style.scss */
 .fas {
   padding-top: 1rem;
   padding-left: 1rem;
-  color: lightgray; }
+  color: lightgray;
+}
 
-/* line 55, scss/style.scss */
 .race-button, .subrace-button, .class-button, .choose-skills-buttons {
   width: 50%;
   padding: 10px;
   margin: 10px 0 0 0;
-  flex-grow: 3; }
+  flex-grow: 3;
+}
 
-/* line 62, scss/style.scss */
 .choose-skills-buttons {
-  flex-grow: 0; }
+  flex-grow: 0;
+  padding: 1px 10px;
+  width: 60%;
+}
 
-/* line 66, scss/style.scss */
 .back-button {
   position: absolute;
   padding: 0;
   top: 1vw;
-  right: 1vw; }
+  right: 1vw;
+}
 
-/* line 72, scss/style.scss */
 .race-info, .class-info {
   position: absolute;
   top: 50vh;
@@ -82,56 +83,56 @@ body {
   list-style-type: square;
   max-height: 0;
   transition: 1s;
-  overflow: hidden; }
-  /* line 88, scss/style.scss */
-  .race-info.visible, .class-info.visible {
-    top: 30%;
-    max-height: 90vh; }
+  overflow: hidden;
+}
+.race-info.visible, .class-info.visible {
+  top: 30%;
+  max-height: 90vh;
+}
 
-/* line 107, scss/style.scss */
 .race-arrow {
-  width: 25%; }
+  width: 25%;
+}
 
-/* line 110, scss/style.scss */
 .stats {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+}
 
-/* line 117, scss/style.scss */
 .stat-container {
   margin: 0 2.5vw 10px 2.5vw;
   text-align: center;
   border: 1px solid black;
   width: 45vw;
-  padding: 10px 0; }
-  /* line 123, scss/style.scss */
-  .stat-container:first-child {
-    margin-top: 125px; }
-  /* line 126, scss/style.scss */
-  .stat-container:nth-child(2) {
-    margin-top: 125px; }
-  /* line 129, scss/style.scss */
-  .stat-container .stat-button {
-    padding: 0 20px; }
+  padding: 10px 0;
+}
+.stat-container:first-child {
+  margin-top: 125px;
+}
+.stat-container:nth-child(2) {
+  margin-top: 125px;
+}
+.stat-container .stat-button {
+  padding: 0 20px;
+}
 
-/* line 134, scss/style.scss */
 .tooltip {
   border: 1px solid black;
   background-color: white;
   position: absolute;
-  z-index: 2; }
+  z-index: 2;
+}
 
-/* line 141, scss/style.scss */
 .main-stat {
-  font-size: 1.7rem; }
+  font-size: 1.7rem;
+}
 
-/* line 146, scss/style.scss */
 .mod-stat {
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+}
 
-/* line 150, scss/style.scss */
 #points-pool-container {
   width: 100vw;
   height: 80px;
@@ -143,86 +144,88 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white; }
-  /* line 163, scss/style.scss */
-  #points-pool-container #points-pool {
-    font-size: 2rem; }
-  /* line 166, scss/style.scss */
-  #points-pool-container .back-button {
-    font-size: 2rem; }
+  background-color: white;
+}
+#points-pool-container #points-pool {
+  font-size: 2rem;
+}
+#points-pool-container .back-button {
+  font-size: 2rem;
+}
 
-/* line 171, scss/style.scss */
 #secondary-attributes-container, #skills-canvas {
   position: fixed;
   width: 100vw;
+  min-height: 100vh;
   height: auto;
   overflow: scroll;
   background: white;
   top: 0;
-  display: flex; }
-  /* line 179, scss/style.scss */
-  #secondary-attributes-container .secondary-attributes-half, #skills-canvas .secondary-attributes-half {
-    border: 1px solid black;
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center; }
-    /* line 186, scss/style.scss */
-    #secondary-attributes-container .secondary-attributes-half .secondary-attributes-box, #skills-canvas .secondary-attributes-half .secondary-attributes-box {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border: 1px solid black;
-      width: 40vw;
-      height: 30vw;
-      text-align: center; }
-      /* line 195, scss/style.scss */
-      #secondary-attributes-container .secondary-attributes-half .secondary-attributes-box h1, #skills-canvas .secondary-attributes-half .secondary-attributes-box h1 {
-        margin-top: 2vh;
-        font-size: 2rem; }
+  display: flex;
+}
+#secondary-attributes-container .secondary-attributes-half, #skills-canvas .secondary-attributes-half {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#secondary-attributes-container .secondary-attributes-half .secondary-attributes-box, #skills-canvas .secondary-attributes-half .secondary-attributes-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid black;
+  width: 40vw;
+  height: 30vw;
+  text-align: center;
+}
+#secondary-attributes-container .secondary-attributes-half .secondary-attributes-box h1, #skills-canvas .secondary-attributes-half .secondary-attributes-box h1 {
+  margin-top: 2vh;
+  font-size: 2rem;
+}
 
-/* line 204, scss/style.scss */
 .close-secondary-attributes {
   position: absolute;
-  right: 5vw; }
+  right: 5vw;
+}
 
-/* line 209, scss/style.scss */
 #class-container {
   position: fixed;
   top: 0;
   background-color: white;
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+}
 
-/* line 217, scss/style.scss */
 .skill-container {
   position: fixed;
   top: 0;
   background-color: white;
   width: 100vw;
-  height: 100vh; }
-  /* line 223, scss/style.scss */
-  .skill-container ul {
-    list-style-type: none; }
-  /* line 226, scss/style.scss */
-  .skill-container .skill-list-item-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 2vw 0; }
-    /* line 230, scss/style.scss */
-    .skill-container .skill-list-item-container:first-child {
-      margin-top: 10vh; }
-    /* line 233, scss/style.scss */
-    .skill-container .skill-list-item-container .skills-list-item {
-      margin-left: 20vw; }
-    /* line 237, scss/style.scss */
-    .skill-container .skill-list-item-container .skill-test-button {
-      margin-right: 15vw;
-      font-size: 0.8rem;
-      padding: 0 3vw; }
+  height: 100vh;
+  overflow: scroll;
+}
+.skill-container ul {
+  list-style-type: none;
+}
+.skill-container .skill-list-item-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2vw 0;
+}
+.skill-container .skill-list-item-container:first-child {
+  margin-top: 10vh;
+}
+.skill-container .skill-list-item-container .skills-list-item {
+  margin-left: 20vw;
+}
+.skill-container .skill-list-item-container .skill-test-button {
+  margin-right: 15vw;
+  font-size: 0.8rem;
+  padding: 0 3vw;
+}
 
-/* line 245, scss/style.scss */
 .roll-pop-container {
   position: fixed;
   top: 10vh;
@@ -231,32 +234,40 @@ body {
   height: 14vh;
   background-color: white;
   border: 1px solid black;
-  text-align: center; }
-  /* line 254, scss/style.scss */
-  .roll-pop-container h1 {
-    font-size: 2rem; }
-  /* line 257, scss/style.scss */
-  .roll-pop-container h2 {
-    font-size: 1.5rem;
-    margin-top: 2vh; }
-  /* line 261, scss/style.scss */
-  .roll-pop-container h3 {
-    margin-top: 2vh;
-    font-size: 1rem; }
-  /* line 265, scss/style.scss */
-  .roll-pop-container button {
-    margin: 1vh 0 2vh 0; }
+  text-align: center;
+}
+.roll-pop-container h1 {
+  font-size: 2rem;
+}
+.roll-pop-container h2 {
+  font-size: 1.5rem;
+  margin-top: 2vh;
+}
+.roll-pop-container h3 {
+  margin-top: 2vh;
+  font-size: 1rem;
+}
+.roll-pop-container button {
+  margin: 1vh 0 2vh 0;
+}
 
-/* line 270, scss/style.scss */
 .crit {
-  background-color: red; }
+  background-color: red;
+}
 
-/* line 274, scss/style.scss */
+#buttons {
+  margin-top: 5vh;
+  justify-content: space-around;
+}
+#buttons button {
+  padding: 3px;
+  width: 40vw;
+}
+
 .hidden {
-  display: none; }
+  display: none;
+}
 
-/* line 278, scss/style.scss */
 .visible {
-  display: block; }
-
-/*# sourceMappingURL=style.css.map */
+  display: block;
+}
